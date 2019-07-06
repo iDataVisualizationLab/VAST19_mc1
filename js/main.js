@@ -295,7 +295,7 @@ function Update_heatmap(data, cellSize) {
             return "cell " + i + " loc " + cell.location;
         })
         .attr("width", cellSize)
-        .attr("height", cellSize)
+        .attr("height", cellSize/2)
         .style("fill", function (d) {
             return colorScale((d.data))
         })
@@ -445,7 +445,7 @@ function showdatabylocation() {
     // var cellSize = 10;
     rowss.transition().duration(3000).selectAll(".cell").attr("x", 0)
         .attr("y", function (cell, i) {
-            return i * (cell_size_global + 4) / 2;
+            return i * (cell_size_global + 8) / 2;
         })
     var rowLabels = maing.append("g")
         .attr("class", "rowLabels")
@@ -457,7 +457,7 @@ function showdatabylocation() {
         })
         .attr("x", 0)
         .attr("y", function (rowLabel, i) {
-            return i * ((cell_size_global + 4) / 2);
+            return i * ((cell_size_global + 8) / 2);
         })
         .style("text-anchor", "middle")
         .style("font-size", "2px")
