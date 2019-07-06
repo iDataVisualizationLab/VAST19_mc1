@@ -97,23 +97,17 @@ d3.csv("./Dataset/data-optimized.csv", function (err, rows) {
 
             //delete null data (value: -1)
             collect_data_by_feature.forEach(d2 => {
-                let temp_store = Array.from(d2);
-                temp_store.forEach((d3, i) => {
-                    if (d3 == -1) {
-                        temp_store.splice(i, 1);
-                    }
-                    // if (d2.length == 0) {
-                    //     d2 = -1;
-                    //     store_length = 0;
-                    // }
-                    // else {
+                // let temp_store = Array.from(d2);
+
+                var temp_store = d2.filter(function (d3) {
+                    return d3 != -1;
+                    
                 })
                 array_report.push(temp_store.length)
                 if (temp_store.length == 0) {
                     temp_store.push(-1);
                 }
                 array_data_mean.push(math.mean(temp_store))
-
 
             })
 
