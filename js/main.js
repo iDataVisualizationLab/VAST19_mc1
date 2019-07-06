@@ -294,8 +294,8 @@ function Update_heatmap(data, cellSize) {
         .attr("class", function (cell, i) {
             return "cell " + i + " loc " + cell.location;
         })
-        .attr("width", cellSize / 2)
-        .attr("height", cellSize / 2)
+        .attr("width", cellSize)
+        .attr("height", cellSize)
         .style("fill", function (d) {
             return colorScale((d.data))
         })
