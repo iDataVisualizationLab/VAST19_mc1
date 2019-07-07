@@ -62,7 +62,10 @@
 }
 
 #box-plot{
-    position:absolute;
-    top: 50px;
-    left: 2000px;
+    position:relative;
+    float: left;
+    top: 1200px;
+    left: 50px;
+    /*width:2200px;*/
+    /*height:2000px;*/
 }

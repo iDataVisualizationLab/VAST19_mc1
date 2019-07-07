@@ -23,7 +23,7 @@ d3.csv("Dataset/mc1-reports-data.csv",function (err, rows) {
 
     var tempFeatures = rows.columns;
     rows.forEach(row=>{
-        row.time = observeTime(formatDayAndHour(parseTimeGeo(row.time)));
+        row.time = observeTimebyhour(formatDayAndHour(parseTimeMinute(row.time)));
         tempFeatures.forEach(d=>{
             if(d !== "time")
                 if(row[d] <= 0)
@@ -137,8 +137,8 @@ function generateLocationSvg(lineChart,location) {
         .style("font-size","8px")
 
 
-    // hide the svg
-    svg.style("display","none");
+    // // hide the svg
+    // svg.style("display","none");
 
 }
 

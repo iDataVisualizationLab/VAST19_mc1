@@ -4,6 +4,7 @@ var dataset = [];
 const parseTimeMinute = d3.timeParse("%Y-%m-%d %H:%M:%S");
 const formatDayAndHour = d3.timeFormat("%m/%d/%Y %H");
 const observeTimebyhour = d3.timeParse("%m/%d/%Y %H");
+
 //Time Format and Parsing
 // const parseTime = d3.timeParse("%m/%d/%Y %H:%M");
 // const formatTimeDay = d3.timeFormat("%d");
@@ -128,7 +129,7 @@ d3.csv("./Dataset/data-optimized.csv", function (err, rows) {
 
     //Prepare for heatmap svg element
     var cellSize = 3;
-    var viewerWidth = 2000,
+    var viewerWidth = 3000,
         viewerHeight = 3000;
 
     svg_heatmap = d3.select("#heatmap").append("svg")
@@ -137,6 +138,7 @@ d3.csv("./Dataset/data-optimized.csv", function (err, rows) {
         .attr("transform", 'translate(0,80)');
 
     colors = ["#ffffcc", "#ffeda0", "#fed976", "#feb24c", "#fd8d3c", "#fc4e2a", "#e31a1c", "#bd0026", "#800026"];
+    // colors = ["#313695","#4575b4","#74add1","#abd9e9","#e0f3f8","#fee090","#fdae61","#f46d43","#d73027","#a50026"];
 
     //create color scale to display the feature
     colorScale = d3.scaleQuantize()
@@ -145,7 +147,7 @@ d3.csv("./Dataset/data-optimized.csv", function (err, rows) {
     rowLabelData = ["shake_intensity", "medical", "buidings", "power", "roads_bridges", "sewer_water"]
 
     //Draw initial heatmap in every 5 minute
-    Update_heatmap(array_data_total, cellSize)
+    Update_heatmap(array_data_total, cellSize, 2840)
 
     //process data for geo_graph
     var geo_data = analyzed_geo_data(array_data_total.flat())
@@ -164,7 +166,7 @@ d3.csv("./Dataset/data-optimized.csv", function (err, rows) {
 
 function updatebyminute() {
     svg_heatmap.selectAll("g").remove();
-    Update_heatmap(array_data_total, 10)
+    Update_heatmap(array_data_total, 10, 2840)
 }
 
 function updatebyhour() {
@@ -223,11 +225,11 @@ function updatebyhour() {
     });
     console.log(array_data_by_hour)
 
-    Update_heatmap(array_data_by_hour, cellSize)
+    Update_heatmap(array_data_by_hour, cellSize, 1840)
 
 }
 
-function Update_heatmap(data, cellSize) {
+function Update_heatmap(data, cellSize, heatmapSize) {
 
     // create tooltip
     tooltip = d3.select("#heatmap")
@@ -242,7 +244,7 @@ function Update_heatmap(data, cellSize) {
     //find minimum time step
     var timestep = []
     timestep = d3.min(data.flat(), d => d.step)
-    cellSize = 1840 / (max_timestep - timestep);
+    cellSize = heatmapSize / (max_timestep - timestep);
     if ((max_timestep - timestep) <= 121) {
         var cellSize_scale = cellSize / 2
     } else if ((max_timestep - timestep) < 60) {
@@ -295,7 +297,7 @@ function Update_heatmap(data, cellSize) {
             return "cell " + i + " loc " + cell.location;
         })
         .attr("width", cellSize)
-        .attr("height", cellSize/2)
+        .attr("height", cellSize/1.5)
         .style("fill", function (d) {
             return colorScale((d.data))
         })
@@ -305,7 +307,8 @@ function Update_heatmap(data, cellSize) {
         .attr("stroke", "black")
 
         .on('mouseover', function (cell) {
-            tooltip.html('<div class="heatmap_tooltip">' + "Time: " + cell.time + "<br/>" + "Location: " + Location_label[cell.location - 1] + "<br/>" + "Report Quantity: " + cell.report[cell.type] + "<br/>" + "Average Damage Level: " + cell.data.toFixed(2) + "<br/>" + "Damage Type: " + rowLabelData[cell.type] + "<br/>" + '</div>');
+            tooltip.html('<div class="heatmap_tooltip">' + "Time: " + cell.time + "<br/>" + "Location: " + Location_label[cell.location - 1] + "<br/>" + "Report Quantity: " +
+                cell.report[cell.type] + "<br/>" + "Average Damage Level: " + cell.data.toFixed(2) + "<br/>" + "Damage Type: " + rowLabelData[cell.type] + "<br/>" + '</div>');
             tooltip.style("visibility", "visible");
         })
         .on('mouseout', function (cell) {
@@ -370,10 +373,10 @@ function Update_heatmap(data, cellSize) {
         })
         .attr("x", 0)
         .attr("y", function (rowLabel, i) {
-            return i * ((cellSize + 2) / 2);
+            return i * ((cellSize ) / 1.5);
         })
         .style("text-anchor", "middle")
-        .style("font-size", "2px")
+        .style("font-size", "4px")
         .attr("transform", function (rowLabel) {
             return `translate(-20, ${4})`;
         })
@@ -385,7 +388,7 @@ function Update_heatmap(data, cellSize) {
             d3.select(this).style("font-size", "10px").classed("hover", true);
         })
         .on('mouseout', function (d, i) {
-            d3.select(this).style("font-size", "2px").classed("hover", false);
+            d3.select(this).style("font-size", "4px").classed("hover", false);
         });
     cell_size_global = cellSize_scale;
 
@@ -598,7 +601,22 @@ function plot_report_linegraph(report, data) {
         timerangedata = s.map(x2Scale.invert)
         filterGeoTimeRange(timerangedata)
         console.log("to4")
-        // console.log(timerangedata)
     }
 
 }
+
+// var a=[];
+// for (i =1; i<241; i++) {
+//     var b=[];
+//
+//         count=i*6;
+//         array_data_total[0].forEach((d,i)=>{
+//         if(d.step<count){
+//         b.push(d)
+//             array_data_total[0].splice(i,1)
+//         }
+//     })
+
+//     a.push(b)
+//
+// }
