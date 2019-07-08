@@ -242,9 +242,11 @@ function drawMap(geojsonFeatures, feature_id,geo_data) {
             wsTooltipDiv.style("visibility","hidden");
         })
         .on("mousemove", function () {
+            wsTooltipDiv.style("top", (d3.event.pageY) + "px").style("left", (d3.event.pageX - 65) + "px");
             tooltip_geo.style("top", (d3.event.pageY - 100) + "px").style("left", (d3.event.pageX - 65) + "px");
         })
         .on("click", function(cell) {
+            tooltip_geo.style("visibility", "hidden");
             wsTooltipDiv.style("visibility","visible");
             createTableTooltip(wsTooltipDiv,info, feature_id)
         });
