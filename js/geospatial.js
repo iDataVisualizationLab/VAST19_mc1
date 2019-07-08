@@ -11,25 +11,25 @@ var hospitals = [
 var nuclearPlant = [-119.784825, 0.162679];
 
 var neighborHood = [
-    {name: "1 - PALACE HILLS", position: [-119.975400, 0.165560]},
-    {name: "2 - NORTHWEST", position: [-119.930400, 0.183860]},
-    {name: "3 - OLD TOWN", position: [-119.873400, 0.193060]},
-    {name: "4 - SAFE TOWN", position: [-119.820400, 0.167060]},
-    {name: "5 - SOUTH WEST", position: [-119.930400, 0.110060]},
-    {name: "6 - DOWNTOWN", position: [-119.930400, 0.140060]},
-    {name: "7 - WILSON FOREST", position: [-119.730400, 0.088060]},
-    {name: "8 - SCENIC VISTA", position: [-119.780400, 0.032060]},
-    {name: "9 - BROADVIEW’s", position: [-119.843400, 0.052060]},
-    {name: "10 - CHAPPARAL’s", position: [-119.803400, 0.052060]},
-    {name: "11 - TERRAPIN SPRINGS", position: [-119.770400, 0.073060]},
-    {name: "12 - PEPPER MILL’s", position: [-119.765400, 0.103060]},
-    {name: "13 - CHEDDARFORD’s", position: [-119.811400, 0.106060]},
-    {name: "14 - EASTON", position: [-119.870800, 0.153120]},
-    {name: "15 - WESTON", position: [-119.898520, 0.151090]},
-    {name: "16 - SOUTHTON", position: [-119.900400, 0.119060]},
-    {name: "17 - OAK WILLOW", position: [-119.853400, 0.083060]},
-    {name: "18 - EAST PARTON", position: [-119.843400, 0.117060]},
-    {name: "19 - WEST PARTON", position: [-119.876400, 0.106060]}];
+    {name: "PALACE HILLS", position: [-119.975400, 0.165560]},
+    {name: "NORTHWEST", position: [-119.930400, 0.183860]},
+    {name: "OLD TOWN", position: [-119.873400, 0.193060]},
+    {name: "SAFE TOWN", position: [-119.820400, 0.167060]},
+    {name: "SOUTH WEST", position: [-119.930400, 0.110060]},
+    {name: "DOWNTOWN", position: [-119.930400, 0.140060]},
+    {name: "WILSON FOREST", position: [-119.730400, 0.088060]},
+    {name: "SCENIC VISTA", position: [-119.780400, 0.032060]},
+    {name: "BROADVIEW’s", position: [-119.843400, 0.052060]},
+    {name: "CHAPPARAL’s", position: [-119.803400, 0.052060]},
+    {name: "TERRAPIN SPRINGS", position: [-119.770400, 0.073060]},
+    {name: "PEPPER MILL’s", position: [-119.765400, 0.103060]},
+    {name: "CHEDDARFORD’s", position: [-119.811400, 0.106060]},
+    {name: "EASTON", position: [-119.870800, 0.153120]},
+    {name: "WESTON", position: [-119.898520, 0.151090]},
+    {name: "SOUTHTON", position: [-119.900400, 0.119060]},
+    {name: "OAK WILLOW", position: [-119.853400, 0.083060]},
+    {name: "EAST PARTON", position: [-119.843400, 0.117060]},
+    {name: "WEST PARTON", position: [-119.876400, 0.106060]}];
 
 const GEO_OPACITY_DEFAULT = 0.3;
 const GEO_OPACITY_HOVER = 0.7;
@@ -40,11 +40,64 @@ var geoHeight = 200;
 //Draw Geomap using geodata
 var projection = d3.geoMercator().center([-119.78, 0.15]).scale(120000);
 var geopath = d3.geoPath().projection(projection);
+const topicColor = ["red", "#ff0000"];
+var wsTooltipContainer = d3.select("body").append("div")
+    .attr('id', "wsTooltipContainer");
+
+var wsTooltipDiv = wsTooltipContainer.append("div")
+    .attr("class", "wsTooltip")
+    .attr("id", "wsTooltip")
+    .style("opacity", 1);
+var columns = ["Location","Damage_Intensity","Total_Report", "Note"];
+var ProjectInfo = [
+    {Area: 1, Note:["None", "Palace Hills area of town is known for its advanced medical surgical care", "None", "None", "None","None"]},
+    {Area: 2, Note:["None", "None", "is a growing neighborhood of upscale condominiums, modern apartment buildings, and townhouses", "None","None","None"]},
+    {Area: 3, Note:["None", "OLD TOWN HOSPITAL in the historic Old Town district is known for its expertise in diabetes and endocrinology, digestive health, oncology, and orthopedics",
+            "is the historic center of our city and the structures here are renowned for their decorative brickwork",
+            "we are working to modernize the electrical distribution system. Expect power outages lasting 30-60 minutes throughout the week",
+            "None",
+            "old water supply lines are being replaced throughout the neighborhood"]},
+    {Area: 4, Note: ["None","None","SAFE TOWN is a neighborhood of older single-family homes providing an easy commute to the Always Safe nuclear power plant and other local industry",
+            "None","None","None"]},
+    {Area: 5, Note: ["None", "None", "SOUTHWEST’s mixture of light industry, single-family homes and garden apartments, and theaters ",
+            "repairs to the substation that supplies Southwest is causing intermittent power outages","None","None"]
+    },
+    {Area: 6, Note: ["None", "Trauma&Children Hospital", "Housing is an eclectic mix of luxury lofts and modest apartments",
+            "None","resurfacing of collector roads, traffic signal repairs. Delays expected","None"]},
+    {Area: 7, Note: ["None","None","is a developing area of new single-family homes in a beautiful, tranquil, wooded area on the edge of the Wilson Forest Nature Preserve",
+            "None","Wilson Highway – shoulder repair resulting in occasional traffic delays","None"]},
+    {Area: 8, Note: ["None","None","has large, custom-built single-family homes to secure, gated communities, trendy apartments, and exclusive condominiums","None",
+            "resurfacing of residential streets resulting in minimal delays to traffic","None"]},
+    {Area: 9, Note: ["None", "COMMUNITY HOSPITAL", "", "None","older single-family homes known for their architectural styles and masonry construction are mixed with city parks",
+            "resurfacing of residential streets resulting in minimal delays to traffic","None"]},
+    {Area: 10, Note: ["None", "None","rural lifestyle and rustic 18th and 19th century farmhouses","None",
+            "resurfacing of collector roads. Expect delays","None"]},
+    {Area: 11, Note: ["None","GOLDCARE HOSPITAL in Terrapin Springs is a full-service, non-profit community hospital",
+            "mixes farm houses with newer, custom homes with lots of acreage","None","None","None"]},
+    {Area: 12, Note: ["None","None", "low-density housing, great restaurants and shopping along the water attracts tourists and locals alike",
+            "None","None","None"]},
+    {Area: 13, Note: ["None","None","quiet residential areas and slow-paced lifestyle",
+            "None","resurfacing of collector roads. Expect delays","None"]},
+    {Area: 14, Note: ["None", "None", "is renowned for excellent schools and quaint single-family brick homes with manicured lawns",
+            "None","None","None"]},
+    {Area: 15, Note: ["None", "None", "Cozy condos and apartment, and lofts above businesses","None","None","None"]},
+    {Area: 16, Note: ["None", "EAGLEPEAK HOSPITAL", "is a quiet neighborhood of older homes and modern garden-style apartment buildings",
+            "None", "resurfacing of residential streets resulting in minimal delays to traffic", "None"]},
+    {Area: 17, Note: ["None", "None", "is close to work, shopping and nightlife for educated couples and young single professionals",
+            "None", "None","None"]},
+    {Area: 18, Note: ["None", "None", "is known for its masonry facades, strong community sports programs and short commute","None","None"
+            ,"a broken water main is currently being repaired at the intersection of Blair and Quealy"
+        ]},
+    {Area: 19, Note: ["None","None","located in the heart of the city, is home for families looking for a short commute to work and play call",
+                "None","None","routine maintenance on the sewer lines is ongoing"]}
+];
+
 
 
 
 
 function analyzed_geo_data(data) {
+     info = [];
     var temp_data_array = [];
     temp_data_array = d3.nest().key(d => d.location).entries(data);
     const reducer_geo = (accumulator, currentValue) => accumulator + currentValue;
@@ -86,7 +139,11 @@ function analyzed_geo_data(data) {
 
     });
 
+    //prepare data for tooltip
+    temp_data_array.forEach((d,i)=>info.push({Location:d.key, Total_Report: d.noreport, Damage_Intensity: d.value, Note:ProjectInfo[i].Note}))
+    // info.sort((a, b) => (a.Total_Report - b.Total_Report));
     return temp_data_array;
+
 
 }
 
@@ -97,7 +154,8 @@ function filterGeoTimeRange(timeRange) {
         return timeRange[0] <= d.time && d.time <= timeRange[1];
     });
     var geo_data = analyzed_geo_data(selectedGeoData)
-    // console.log(selectedGeoData)
+
+    console.log(geo_data)
     for (var i=0; i<6; i++)
     {
         updateGeoFill(i,geo_data)
@@ -135,22 +193,8 @@ function updateGeoFill(i,geo_data) {
                     "Report Quantity: " + ((geo_data[d.properties.Id -1]).noreport[i]) + "<br/>" +'</div>');
                 tooltip_geo.style("visibility", "visible");
             })
-            // .on('mouseout', function (cell) {
-            //     // d3.select(this).classed("hover", false);
-            //     tooltip_geo.style("visibility", "hidden");
-            // })
-            // .on("mousemove", function (cell) {
-            //     tooltip_geo.style("top", (d3.event.pageY - 100) + "px").style("left", (d3.event.pageX - 65) + "px");
-            // });
-
 
     }
-
-
-
-
-
-
 }
 
 
@@ -192,12 +236,17 @@ function drawMap(geojsonFeatures, feature_id,geo_data) {
                 "Report Quantity: " + ((geo_data[d.properties.Id -1]).noreport[feature_id]) + "<br/>" +'</div>');
             tooltip_geo.style("visibility", "visible");
         })
-        .on('mouseout', function (cell) {
+        .on('mouseout', function () {
             // d3.select(this).classed("hover", false);
             tooltip_geo.style("visibility", "hidden");
+            wsTooltipDiv.style("visibility","hidden");
         })
-        .on("mousemove", function (cell) {
+        .on("mousemove", function () {
             tooltip_geo.style("top", (d3.event.pageY - 100) + "px").style("left", (d3.event.pageX - 65) + "px");
+        })
+        .on("click", function(cell) {
+            wsTooltipDiv.style("visibility","visible");
+            createTableTooltip(wsTooltipDiv,info, feature_id)
         });
     groupGeo.selectAll("geoHospitals").data(hospitals)
         .enter()
@@ -234,10 +283,59 @@ groupGeo.append("svg:image")
         .text(d => d.name);
 }
 
+function createTableTooltip(wsTooltipDiv, info, feature_id) {
+    wsTooltipDiv.selectAll("*").remove();
+    // process info text
+
+    let table = wsTooltipDiv.append("table")
+            .attr("class", "tableTooltip")
+            .attr("id", "tableTooltip")
+            .style("width", "100%"),
+        thead = table.append("thead"),
+        tbody = table.append("tbody");
+
+    // header row
+    thead.append("tr")
+        .selectAll("th")
+        .data(columns)
+        .enter()
+        .append("th")
+        .attr("class", column => "column-" + column)
+        .text(column => capitalize(column));
+
+    // create a row for each record
+    let rows = tbody.selectAll("tr")
+        .data(info)
+        .enter()
+        .append("tr");
 
 
+    let cells = rows.selectAll("td")
+        .data(function (row) {
+            return columns.map(function (column) {
+                return {column: column, value: row[column]}
+            })
+        })
+        .enter()
+        .append("td")
+        .style("color", d => ((d.column === "Location")) ? topicColor[1] : "#000")
+        .html(function (d) {
+            if (d.column == "Location"){
+                return neighborHood[d.value-1].name;
+            }
+           else if (d.column == "Damage_Intensity") {
+               return (d.value[feature_id]).toFixed(2);
+            }
+           else {
+               return d.value[feature_id];
+            }
+        })
+    ;
+}
 
-
+function capitalize(string){
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 
 
