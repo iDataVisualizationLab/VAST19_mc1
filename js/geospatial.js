@@ -47,7 +47,7 @@ var wsTooltipContainer = d3.select("body").append("div")
 var wsTooltipDiv = wsTooltipContainer.append("div")
     .attr("class", "wsTooltip")
     .attr("id", "wsTooltip")
-    .style("opacity", 1);
+    .style("visibility", "hidden");
 var columns = ["Location","Damage_Intensity","Total_Report", "Note"];
 var ProjectInfo = [
     {Area: 1, Note:["None", "Palace Hills area of town is known for its advanced medical surgical care", "None", "None", "None","None"]},
@@ -57,18 +57,18 @@ var ProjectInfo = [
             "we are working to modernize the electrical distribution system. Expect power outages lasting 30-60 minutes throughout the week",
             "None",
             "old water supply lines are being replaced throughout the neighborhood"]},
-    {Area: 4, Note: ["None","None","SAFE TOWN is a neighborhood of older single-family homes providing an easy commute to the Always Safe nuclear power plant and other local industry",
+    {Area: 4, Note: ["None","None","is a neighborhood of older single-family homes",
             "None","None","None"]},
     {Area: 5, Note: ["None", "None", "SOUTHWEST’s mixture of light industry, single-family homes and garden apartments, and theaters ",
             "repairs to the substation that supplies Southwest is causing intermittent power outages","None","None"]
     },
     {Area: 6, Note: ["None", "Trauma&Children Hospital", "Housing is an eclectic mix of luxury lofts and modest apartments",
             "None","resurfacing of collector roads, traffic signal repairs. Delays expected","None"]},
-    {Area: 7, Note: ["None","None","is a developing area of new single-family homes in a beautiful, tranquil, wooded area on the edge of the Wilson Forest Nature Preserve",
+    {Area: 7, Note: ["None","None","is a developing area of new single-family homes in a beautiful, tranquil, wooded area",
             "None","Wilson Highway – shoulder repair resulting in occasional traffic delays","None"]},
     {Area: 8, Note: ["None","None","has large, custom-built single-family homes to secure, gated communities, trendy apartments, and exclusive condominiums","None",
             "resurfacing of residential streets resulting in minimal delays to traffic","None"]},
-    {Area: 9, Note: ["None", "COMMUNITY HOSPITAL", "", "None","older single-family homes known for their architectural styles and masonry construction are mixed with city parks",
+    {Area: 9, Note: ["None", "COMMUNITY HOSPITAL", "None", "None","older single-family homes known for their architectural styles and masonry construction are mixed with city parks",
             "resurfacing of residential streets resulting in minimal delays to traffic","None"]},
     {Area: 10, Note: ["None", "None","rural lifestyle and rustic 18th and 19th century farmhouses","None",
             "resurfacing of collector roads. Expect delays","None"]},
@@ -243,7 +243,7 @@ function drawMap(geojsonFeatures, feature_id,geo_data) {
         })
         .on("mousemove", function () {
             wsTooltipDiv.style("top", (d3.event.pageY) + "px").style("left", (d3.event.pageX - 65) + "px");
-            tooltip_geo.style("top", (d3.event.pageY - 100) + "px").style("left", (d3.event.pageX - 65) + "px");
+            tooltip_geo.style("top", (d3.event.pageY - 120) + "px").style("left", (d3.event.pageX - 65) + "px");
         })
         .on("click", function(cell) {
             tooltip_geo.style("visibility", "hidden");

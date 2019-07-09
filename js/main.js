@@ -316,7 +316,7 @@ function Update_heatmap(data, cellSize, heatmapSize) {
             tooltip.style("visibility", "hidden");
         })
         .on("mousemove", function (cell) {
-            tooltip.style("top", (d3.event.pageY - 800) + "px").style("left", (d3.event.pageX - 65) + "px");
+            tooltip.style("top", (d3.event.pageY - 770) + "px").style("left", (d3.event.pageX - 65) + "px");
         });
     var legend = svg_heatmap.append("g")
         .attr("class", "legend")
