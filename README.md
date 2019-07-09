@@ -1,10 +1,8 @@
-# CS5331-Project-3
+# VAST 2019 - Mini Challenge 1
 
-Video Link: https://www.youtube.com/watch?v=nwuTuJTfbN4&feature=youtu.be
 
 App's Link: https://idatavisualizationlab.github.io/VAST19_mc1/
 
-https://nhatmusic.github.io/CS5331-Project-3/
 
 ## Questions
 - Emergency responders will base their initial response on the earthquake shake map. Use visual analytics to determine how their response should change based on damage reports from citizens on the ground. How would you prioritize neighborhoods for response? Which parts of the city are hardest hit? Limit your response to 1000 words and 10 images.
