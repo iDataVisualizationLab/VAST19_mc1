@@ -480,3 +480,12 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; }
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+.timerange {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-weight: normal;
+    color: #222;
+}

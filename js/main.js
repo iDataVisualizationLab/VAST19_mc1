@@ -2,6 +2,7 @@ var dataset = [];
 //Time Format and Parsing
 //format of data: 2020-04-09 12:30:00
 const parseTimeMinute = d3.timeParse("%Y-%m-%d %H:%M:%S");
+const formatDayAndMin = d3.timeFormat("%m/%d/%Y %H:%M");
 const formatDayAndHour = d3.timeFormat("%m/%d/%Y %H");
 const observeTimebyhour = d3.timeParse("%m/%d/%Y %H");
 
@@ -594,6 +595,7 @@ function plot_report_linegraph(report, data) {
     }
 
     function zoomed() {
+        d3.selectAll('.timerange').remove()
         console.log("to3")
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "brush") return; // ignore zoom-by-brush
         var t = d3.event.transform;
@@ -603,6 +605,16 @@ function plot_report_linegraph(report, data) {
         context.select(".brush").call(brush.move, xScale.range().map(t.invertX, t));
         var s = xScale.range().map(t.invertX, t)
         timerangedata = s.map(x2Scale.invert)
+        svg.append("g")
+            .attr("class", "timerange")
+            .selectAll(".timerange")
+            .data(timerangedata)
+            .enter().append("text")
+            .text("Selected Time Range: "+ (formatDayAndMin(timerangedata[0]))+ " to " + (formatDayAndMin(timerangedata[1])))
+            .attr("x", 300)
+            .attr("y", 20)
+            .style("text-anchor", "middle")
+            .style("font-size", "15px")
         d3.select("#loader").style("display", "block");
         filterGeoTimeRange(timerangedata)
         console.log("to4")
