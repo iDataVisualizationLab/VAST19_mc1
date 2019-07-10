@@ -385,7 +385,7 @@ function Update_heatmap(data, cellSize, heatmapSize) {
             return "rowLabel_" + i;
         })
         .on('mouseover', function (d, i) {
-            d3.select(this).style("font-size", "10px").classed("hover", true);
+            d3.select(this).style("font-size", "20px").classed("hover", true);
         })
         .on('mouseout', function (d, i) {
             d3.select(this).style("font-size", "4px").classed("hover", false);
@@ -399,6 +399,9 @@ function Update_heatmap(data, cellSize, heatmapSize) {
             return "visible";
         }
     })
+
+    d3.select("#loader").style("display", "none");
+    $.notify("Loading Complete", "success");
 }
 
 function initialize(i) {
@@ -419,7 +422,7 @@ function showdatabyfeature() {
             function (d) {
                 if (a.includes(d.type)) {
 
-                    return d.type * cell_size_global * 32 - ((d.location - 1) * cell_size_global * 9);
+                    return d.type * cell_size_global * 32 - ((d.location - 1) * cell_size_global * 8.6);
                 }
             });
     var label = ["Shake_intensity", "Medical", "Buildings", "Power", "Roads&Bridges", "Sewer&Water"]
@@ -441,7 +444,7 @@ function showdatabylocation() {
     var y = d3.scaleLinear().range([cell_size_global * 190, 0]).domain([19, 0]);
     // Add the y Axis
     svg_heatmap.append("g").attr("class", "y_axis")
-        .attr("transform", (song, i) => `translate(${100},${(50) + i * cell_size_global * 10})`)
+        .attr("transform", (song, i) => `translate(${100},${(50) + i * cell_size_global * 9.4})`)
         .call(d3.axisLeft(y).ticks(19).tickFormat(function (d) {
             return Location_label[d];
         }));
@@ -472,7 +475,7 @@ function showdatabylocation() {
             return "rowLabel_" + i;
         })
         .on('mouseover', function (d, i) {
-            d3.select(this).style("font-size", "10px").classed("hover", true);
+            d3.select(this).style("font-size", "20px").classed("hover", true);
         })
         .on('mouseout', function (d, i) {
             d3.select(this).style("font-size", "2px").classed("hover", false);
@@ -577,6 +580,7 @@ function plot_report_linegraph(report, data) {
         .call(zoom);
 
     function brushed() {
+        d3.select("#loader").style("display", "block");
         console.log("to1")
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
         var s = d3.event.selection || x2Scale.range();
@@ -599,6 +603,7 @@ function plot_report_linegraph(report, data) {
         context.select(".brush").call(brush.move, xScale.range().map(t.invertX, t));
         var s = xScale.range().map(t.invertX, t)
         timerangedata = s.map(x2Scale.invert)
+        d3.select("#loader").style("display", "block");
         filterGeoTimeRange(timerangedata)
         console.log("to4")
     }

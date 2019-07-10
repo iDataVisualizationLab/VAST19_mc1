@@ -149,6 +149,7 @@ function analyzed_geo_data(data) {
 
 
 function filterGeoTimeRange(timeRange) {
+    d3.select("#loader").style("display", "block");
     console.log("to5")
     var selectedGeoData = array_data_total.flat().filter(function (d) {
         return timeRange[0] <= d.time && d.time <= timeRange[1];
