@@ -224,7 +224,7 @@ function updatebyhour() {
         })
 
     });
-    console.log(array_data_by_hour)
+    // console.log(array_data_by_hour)
 
     Update_heatmap(array_data_by_hour, cellSize, 1840)
 
@@ -582,7 +582,7 @@ function plot_report_linegraph(report, data) {
 
     function brushed() {
         d3.select("#loader").style("display", "block");
-        console.log("to1")
+        // console.log("to1")
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "zoom") return; // ignore brush-by-zoom
         var s = d3.event.selection || x2Scale.range();
         xScale.domain(s.map(x2Scale.invert, x2Scale));
@@ -591,12 +591,12 @@ function plot_report_linegraph(report, data) {
         svg.select(".zoom").call(zoom.transform, d3.zoomIdentity
             .scale(width / (s[1] - s[0]))
             .translate(-s[0], 0));
-        console.log("to2")
+        // console.log("to2")
     }
 
     function zoomed() {
         d3.selectAll('.timerange').remove()
-        console.log("to3")
+        // console.log("to3")
         if (d3.event.sourceEvent && d3.event.sourceEvent.type === "brush") return; // ignore zoom-by-brush
         var t = d3.event.transform;
         xScale.domain(t.rescaleX(x2Scale).domain());
@@ -617,23 +617,21 @@ function plot_report_linegraph(report, data) {
             .style("font-size", "15px")
         d3.select("#loader").style("display", "block");
         filterGeoTimeRange(timerangedata)
-        console.log("to4")
+        // console.log("to4")
     }
 
 }
 
-// var a=[];
-// for (i =1; i<241; i++) {
-//     var b=[];
-//
-//         count=i*6;
-//         array_data_total[0].forEach((d,i)=>{
-//         if(d.step<count){
-//         b.push(d)
-//             array_data_total[0].splice(i,1)
-//         }
-//     })
+var showLine = true;
+function showLineGraph(){
 
-//     a.push(b)
-//
-// }
+    if (showLine == true){
+        d3.select("#box-plot").style("visibility","visible")
+        showLine = false;
+    }
+    else {
+        d3.select("#box-plot").style("visibility","hidden")
+        showLine = true;
+    }
+
+}

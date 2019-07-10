@@ -4,10 +4,6 @@ var lineChartWidth = 600, lineChartHeight = 100,
     lineChartContentWidth = lineChartWidth - lineChartMargin.left - lineChartMargin.right,
     lineChartContentHeight = lineChartHeight - lineChartMargin.top - lineChartMargin.bottom;
 
-// var lineChartSvg = d3.select("#box-plot").append("svg").attr("id","svg1").attr("width", lineChartWidth).attr("height", lineChartHeight),
-//     lineChartG = lineChartSvg.append("g").attr("id","g1").attr("transform", "translate(" + lineChartMargin.left + "," + lineChartMargin.top + ")");
-
-
 // x, y, and color Scale
 var lineChartX = d3.scaleTime().range([0, lineChartContentWidth]),
     lineChartY = d3.scaleLinear().range([0,lineChartContentHeight]).domain([10,0]),
@@ -19,6 +15,28 @@ var lineChartXAxis = d3.axisBottom(lineChartX),
 
 let lineChartFeatures = [];
 let locations = [];
+
+function boxDragStarted() {
+    let obj = d3.select(this);
+    xOffset = d3.event.x - obj.node().getBoundingClientRect().x + 150;
+    yOffset = d3.event.y - obj.node().getBoundingClientRect().y + 100;
+
+}
+
+function boxDragged() {
+    d3.event.sourceEvent.stopPropagation();
+    let obj = d3.select(this);
+    let xCoord = d3.event.x - xOffset - 8;
+    let yCoord = d3.event.y - yOffset - 80;
+    obj.style("left", xCoord + "px");
+    obj.style("top", yCoord + "px");
+
+}
+
+function boxDragEnded() {
+    d3.event.sourceEvent.stopPropagation();
+}
+
 d3.csv("Dataset/mc1-reports-data.csv",function (err, rows) {
 
     var tempFeatures = rows.columns;
@@ -72,6 +90,7 @@ d3.csv("Dataset/mc1-reports-data.csv",function (err, rows) {
     // lineChartX.domain([new Date(timeRange[0]-5*60*60*1000),new Date(timeRange[1].getTime() + 5*60*60*1000)]);
     lineChartX.domain(timeRange);
 
+    console.log(lineChart)
     // Draw all location
     locations.forEach(loc=>{
         generateLocationSvg(lineChart,loc);
@@ -81,10 +100,34 @@ d3.csv("Dataset/mc1-reports-data.csv",function (err, rows) {
 
 });
 
+let selectionPanel = d3.select("#box-plot")
+    .append("div")
+    .attr("class", "floatingBox")
+    .style("left", (180) + "px")
+    .style("top", (680) + "px");
+
+d3.selectAll(".floatingBox").call(d3.drag()
+    .on("start", boxDragStarted)
+    .on("drag", boxDragged)
+    .on("end", boxDragEnded));
+
+// top move/drag icon
+selectionPanel.append("div")
+    .attr("class", "floatingBoxHeader")
+    .html("<div>" +
+        "Line Graph of Uncertainty" +
+        "</div>");
+
+let panelContent = selectionPanel.append("div")
+    .attr("class", "floatingBoxContent")
+    .attr("id", "mapContent");
 
 // Generate svg, g, and lines
 function generateLocationSvg(lineChart,location) {
-    var svg = d3.select("#box-plot").append("svg").attr("id","svg"+location).attr("width", lineChartWidth).attr("height", lineChartHeight),
+
+
+
+    var svg = panelContent.append("svg").attr("id","svg"+location).attr("width", lineChartWidth).attr("height", lineChartHeight),
         g = svg.append("g").attr("id","g"+location).attr("transform", "translate(" + lineChartMargin.left + "," + lineChartMargin.top + ")");
 
     // Draw axises

@@ -149,15 +149,15 @@ function analyzed_geo_data(data) {
 
 
 function filterGeoTimeRange(timeRange) {
-    console.log(timeRange)
+    // console.log(timeRange)
     d3.select("#loader").style("display", "block");
-    console.log("to5")
+    // console.log("to5")
     var selectedGeoData = array_data_total.flat().filter(function (d) {
         return timeRange[0] <= d.time && d.time <= timeRange[1];
     });
     var geo_data = analyzed_geo_data(selectedGeoData)
 
-    console.log(geo_data)
+    // console.log(geo_data)
     for (var i=0; i<6; i++)
     {
         updateGeoFill(i,geo_data)
@@ -173,7 +173,7 @@ function filterGeoTimeRange(timeRange) {
     var cellSize = 4;
     Update_heatmap(selectedHeatmap_data, cellSize,1840)
 
-    console.log("to6")
+    // console.log("to6")
 }
 
 function updateGeoFill(i,geo_data) {
@@ -239,7 +239,6 @@ function drawMap(geojsonFeatures, feature_id,geo_data) {
             tooltip_geo.style("visibility", "visible");
         })
         .on('mouseout', function () {
-            // d3.select(this).classed("hover", false);
             tooltip_geo.style("visibility", "hidden");
             wsTooltipDiv.style("visibility","hidden");
         })
@@ -276,11 +275,11 @@ groupGeo.append("svg:image")
         .attr("x", d => projection(d.position)[0])
         .attr("y", d => projection(d.position)[1])
         .attr("transform", d => {
-            if (d.name == "7 - WILSON FOREST")
+            if (d.name == "WILSON FOREST")
                 return "translate(230,990) rotate(-90)";
-            else if (d.name == "10 - CHAPPARAL’s")
+            else if (d.name == "CHAPPARAL’s")
                 return "translate(30,908) rotate(-90)";
-            else if (d.name == "8 - SCENIC VISTA")
+            else if (d.name == "SCENIC VISTA")
                 return "translate(-150,255) rotate(-25)";
             return null;
         })
