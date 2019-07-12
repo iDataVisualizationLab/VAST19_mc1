@@ -735,9 +735,11 @@ function drawLinegraph(array_data_total){
     var timeRange = d3.extent(array_data_total[1],d=>d.time_hour);
     lineChartX.domain(timeRange);
     // console.log(lineChart)
+    //get the min value of deviation
+    var min_value = _.unzip(deviation_value);
     // Draw all location
     for (var loc = 1; loc < 20; loc ++) {
-        generateLocationSvg(array_data_by_hour, loc, deviation_value);
+        generateLocationSvg(array_data_by_hour, loc, deviation_value, min_value);
     }
 
 }

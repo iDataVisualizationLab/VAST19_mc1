@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6db8f5fa-6d65-4b28-b31a-f99ed22100a9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/line-graph.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/line-graph.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/geospatial.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/geospatial.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/lineChart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/lineChart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
     </list>
@@ -23,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/lineChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="121" column="23" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="23" />
+            <state relative-caret-position="358">
+              <caret line="243" column="1" lean-forward="true" selection-start-line="243" selection-start-column="1" selection-end-line="243" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -32,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/geospatial.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
+            <state relative-caret-position="261">
+              <caret line="186" column="18" lean-forward="true" selection-start-line="186" selection-start-column="18" selection-end-line="186" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -68,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="741" lean-forward="true" selection-start-line="741" selection-end-line="741" />
+            <state relative-caret-position="412">
+              <caret line="739" column="24" lean-forward="true" selection-start-line="739" selection-start-column="24" selection-end-line="739" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -78,7 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>d.time</find>
       <find>drawline</find>
       <find>d.time_</find>
       <find>rowlabel</find>
@@ -108,6 +103,7 @@
       <find>timestep</find>
       <find>geo</find>
       <find>legend</find>
+      <find>tofi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,12 +195,12 @@
       <workItem from="1562638365412" duration="3534000" />
       <workItem from="1562727238830" duration="10388000" />
       <workItem from="1562812704217" duration="12098000" />
-      <workItem from="1562860623118" duration="24946000" />
+      <workItem from="1562860623118" duration="27036000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74991000" />
+    <option name="totallyTimeSpent" value="77081000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -268,24 +264,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/geospatial.js">
+    <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
+        <state relative-caret-position="412">
+          <caret line="739" column="24" lean-forward="true" selection-start-line="739" selection-start-column="24" selection-end-line="739" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
+    <entry file="file://$PROJECT_DIR$/js/geospatial.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="741" lean-forward="true" selection-start-line="741" selection-end-line="741" />
+        <state relative-caret-position="261">
+          <caret line="186" column="18" lean-forward="true" selection-start-line="186" selection-start-column="18" selection-end-line="186" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/lineChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="121" column="23" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="23" />
+        <state relative-caret-position="358">
+          <caret line="243" column="1" lean-forward="true" selection-start-line="243" selection-start-column="1" selection-end-line="243" selection-end-column="1" />
         </state>
       </provider>
     </entry>

@@ -13,6 +13,7 @@ var lineChartX = d3.scaleTime().range([0, lineChartContentWidth]),
 var lineChartXAxis = d3.axisBottom(lineChartX),
     lineChartYAxis = d3.axisLeft(lineChartY).ticks(5);
 
+var click_line = true;
 
 function boxDragStarted() {
     let obj = d3.select(this);
@@ -39,7 +40,7 @@ let selectionPanel = d3.select("#box-plot")
     .append("div")
     .attr("class", "floatingBox")
     .style("left", (180) + "px")
-    .style("top", (680) + "px");
+    .style("top", (20) + "px");
 
 d3.selectAll(".floatingBox").call(d3.drag()
     .on("start", boxDragStarted)
@@ -50,7 +51,7 @@ d3.selectAll(".floatingBox").call(d3.drag()
 selectionPanel.append("div")
     .attr("class", "floatingBoxHeader")
     .html("<div>" +
-        "Line Graph of Uncertainty shows box-plot and standard deviation" +
+        "---------------- Box-plot and Standard Deviation Visualiazation for Uncertainty ---------------" +
         "</div>");
 
 let panelContent = selectionPanel.append("div")
@@ -58,7 +59,7 @@ let panelContent = selectionPanel.append("div")
     .attr("id", "mapContent");
 
 // Generate svg, g, and lines
-function generateLocationSvg(lineChart,location, standard_deviation) {
+function generateLocationSvg(lineChart,location, standard_deviation, min_value) {
 
 
     var svg = panelContent.append("svg").attr("id","svg"+location).attr("width", lineChartWidth).attr("height", lineChartHeight),
@@ -106,8 +107,8 @@ function generateLocationSvg(lineChart,location, standard_deviation) {
         .attr("y", 0).attr("width", 5).attr("height",5)
         .attr("fill", (d,i)=>{
             return lineChartColor(i)})
-    .on("mouseover",d=>MouseOver(d,location))
-    .on("mouseout",d=>MouseOut(d,location));
+    .on("click",d=> click_line==true?MouseOver(d,location):MouseOut(d,location));
+    // .on("mouseout",d=>MouseOut(d,location));
 
     legend.selectAll(".legendText").data(rowLabelData).enter().append("text")
         .attr("class","legendText").attr("id",d=>"legendText"+d+location)
@@ -119,6 +120,7 @@ function generateLocationSvg(lineChart,location, standard_deviation) {
         .attr("class","legendDeviation").attr("id",(d,i)=>"legendDeviation"+rowLabelData[i]+location)
         .attr("x", (d,i)=>i*80+10)
         .attr("y", 14).text(d=>(d!=undefined)?d.toFixed(2):"NaN")
+        .style("fill", (d,i)=> d==d3.min((min_value)[i])?"red":"black")
         .style("font-size","10px")
 
 
@@ -217,7 +219,7 @@ function MouseOver(data) {
             }
         })
     }
-
+click_line = false;
 }
 
 function MouseOut(data){
@@ -238,6 +240,7 @@ function MouseOut(data){
             }
         });
     }
+    click_line = true;
 }
 
 
