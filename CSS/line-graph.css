@@ -1,11 +1,4 @@
-/*.parallelLine {*/
-    /*fill: none;*/
-    /*stroke: steelblue;*/
-    /*stroke-width: 2px;*/
-/*}*/
-.chart {
 
-}
 
 .main text {
     font: 10px sans-serif;
@@ -20,11 +13,6 @@
     stroke: #fff;
     stroke-width: 1.5px;
 }
-
-/*.link {*/
-/*stroke: #000000;*/
-/*stroke-opacity: .6;*/
-/*}*/
 
 .axis {
     opacity: 0.5;

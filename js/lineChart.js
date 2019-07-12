@@ -1,20 +1,18 @@
 // Info to show visualization
-var lineChartWidth = 600, lineChartHeight = 100,
+var lineChartWidth = 600, lineChartHeight = 200,
     lineChartMargin = {top: 30, right: 20, bottom: 30, left: 50},
     lineChartContentWidth = lineChartWidth - lineChartMargin.left - lineChartMargin.right,
     lineChartContentHeight = lineChartHeight - lineChartMargin.top - lineChartMargin.bottom;
 
 // x, y, and color Scale
 var lineChartX = d3.scaleTime().range([0, lineChartContentWidth]),
-    lineChartY = d3.scaleLinear().range([0,lineChartContentHeight]).domain([10,0]),
+    lineChartY = d3.scaleLinear().range([0,lineChartContentHeight-100]).domain([10,0]),
     lineChartColor = d3.scaleOrdinal().range(d3.schemeCategory10);
 
 // axises definition
 var lineChartXAxis = d3.axisBottom(lineChartX),
     lineChartYAxis = d3.axisLeft(lineChartY).ticks(5);
 
-let lineChartFeatures = [];
-let locations = [];
 
 function boxDragStarted() {
     let obj = d3.select(this);
@@ -37,69 +35,6 @@ function boxDragEnded() {
     d3.event.sourceEvent.stopPropagation();
 }
 
-d3.csv("Dataset/mc1-reports-data.csv",function (err, rows) {
-
-    var tempFeatures = rows.columns;
-    rows.forEach(row=>{
-        row.time = observeTimebyhour(formatDayAndHour(parseTimeMinute(row.time)));
-        tempFeatures.forEach(d=>{
-            if(d !== "time")
-                if(row[d] <= 0)
-                    row[d] = null;
-        })
-    });
-
-    lineChartFeatures = rows.columns.slice(2,8);
-
-    //nest data by time and sort data
-    var dataByTime = d3.nest().key(d=>d.time).entries(rows);
-    dataByTime.sort((a,b)=>new Date(a.key) - new Date(b.key));
-
-    // Find all location
-    var databyLocation = d3.nest().key(d=>d.location).entries(rows);
-    databyLocation.forEach(d=>{
-        locations.push(d.key);
-    });
-    locations.sort((a,b)=>(+a) - (+b)); // sort data by convert String to number
-
-    // console.log(dataByTime.length);
-
-    var lineChart = [];
-    dataByTime.forEach(time=>{
-
-        locations.forEach(loc=>{
-            // if(!(loc.key in lineChart))
-            //     lineChart[loc.key] = {};
-            // if(!(time.key in lineChart[loc.key]))
-            //     lineChart[loc.key][time.key] = {};
-            lineChartFeatures.forEach(fea=>{
-                // lineChart[loc.key][time.key][fea] = {};
-                var data = objByPropertyAndLocation(time.values,fea,loc);
-                // lineChart[loc.key][time.key][fea] = data;
-
-                lineChart.push({time: time.key, feature: fea, location: loc, [fea]:data});
-            })
-        })
-
-
-
-    });
-    // console.log(lineChart);
-
-    var timeRange = d3.extent(rows,d=>d.time);
-    // lineChartX.domain([new Date(timeRange[0]-5*60*60*1000),new Date(timeRange[1].getTime() + 5*60*60*1000)]);
-    lineChartX.domain(timeRange);
-
-    console.log(lineChart)
-    // Draw all location
-    locations.forEach(loc=>{
-        generateLocationSvg(lineChart,loc);
-    });
-
-    // initialize();
-
-});
-
 let selectionPanel = d3.select("#box-plot")
     .append("div")
     .attr("class", "floatingBox")
@@ -115,7 +50,7 @@ d3.selectAll(".floatingBox").call(d3.drag()
 selectionPanel.append("div")
     .attr("class", "floatingBoxHeader")
     .html("<div>" +
-        "Line Graph of Uncertainty" +
+        "Line Graph of Uncertainty shows box-plot and standard deviation" +
         "</div>");
 
 let panelContent = selectionPanel.append("div")
@@ -123,17 +58,16 @@ let panelContent = selectionPanel.append("div")
     .attr("id", "mapContent");
 
 // Generate svg, g, and lines
-function generateLocationSvg(lineChart,location) {
-
+function generateLocationSvg(lineChart,location, standard_deviation) {
 
 
     var svg = panelContent.append("svg").attr("id","svg"+location).attr("width", lineChartWidth).attr("height", lineChartHeight),
-        g = svg.append("g").attr("id","g"+location).attr("transform", "translate(" + lineChartMargin.left + "," + lineChartMargin.top + ")");
+        g = svg.append("g").attr("id","g"+location).attr("transform", "translate(" + lineChartMargin.left + "," + 100 + ")");
 
     // Draw axises
     g.append("g")
         .attr("class", "grid")
-        .attr("transform", "translate(0, " + lineChartContentHeight + ")").call(lineChartXAxis);
+        .attr("transform", "translate(0, " + 40 + ")").call(lineChartXAxis);
     g.append("g")
         .attr("class", "grid").call(lineChartYAxis);
 
@@ -147,18 +81,18 @@ function generateLocationSvg(lineChart,location) {
     var outerFilter = svg.append("defs")
         .append("filter")
         .attr("id", "outerFilter"+location)
-        .append("feGaussianBlur")
-        .attr("stdDeviation", 4);
+        .append("feGaussianBlur");
+        // .attr("stdDeviation", 4);
 
     // Draw lines
-    lineChartFeatures.forEach(feature=>{
+    rowLabelData.forEach((feature,i)=>{
         // console.log(feature);
-        drawLine(lineChart,feature,location);
+        drawLine(lineChart,i,location);
     });
-    // console.log(lineChartFeatures);
+    // console.log(rowLabelData);
 
     // Append title of graph
-    g.append("text").attr("x",50).attr("y",-5)
+    g.append("text").attr("x",50).attr("y",-50)
         .text("Location " + neighborHood[+location-1].name)
         .style("font-size","8px");
 
@@ -166,18 +100,26 @@ function generateLocationSvg(lineChart,location) {
     var legend = svg.append("g").attr("id","legend")
         .attr("transform", "translate(" + lineChartMargin.left + ",10)");
 
-    legend.selectAll(".legendRect").data(lineChartFeatures).enter().append("rect")
+    legend.selectAll(".legendRect").data(rowLabelData).enter().append("rect")
         .attr("class","legendRect").attr("id",d=>"legendRect"+d+location)
         .attr("x", (d,i)=>i*80)
         .attr("y", 0).attr("width", 5).attr("height",5)
-        .attr("fill", d=>{
-            return lineChartColor(d)});
+        .attr("fill", (d,i)=>{
+            return lineChartColor(i)})
+    .on("mouseover",d=>MouseOver(d,location))
+    .on("mouseout",d=>MouseOut(d,location));
 
-    legend.selectAll(".legendText").data(lineChartFeatures).enter().append("text")
+    legend.selectAll(".legendText").data(rowLabelData).enter().append("text")
         .attr("class","legendText").attr("id",d=>"legendText"+d+location)
         .attr("x", (d,i)=>i*80+10)
         .attr("y", 5).text(d=>d)
         .style("font-size","8px")
+
+    legend.selectAll(".legendDeviation").data(standard_deviation[location-1]).enter().append("text")
+        .attr("class","legendDeviation").attr("id",(d,i)=>"legendDeviation"+rowLabelData[i]+location)
+        .attr("x", (d,i)=>i*80+10)
+        .attr("y", 14).text(d=>(d!=undefined)?d.toFixed(2):"NaN")
+        .style("font-size","10px")
 
 
     // // hide the svg
@@ -195,175 +137,135 @@ function drawLine(lineChart,property,location) {
     var lineChartG = d3.select("#g"+location);
 
     var data = [];
-    lineChart.forEach(d=>{
-        if(d.location == location && (property in d)){
-            // data.push({time: new Date(d.time), value: d[property].max});
-            data.push(d);
-        }
-    });
-    // console.log(data);
+    data = lineChart[location-1]
+    var step = [];
+    data.forEach(d=>step.push(d.step));
+    for (i=0;i<121;i++){
+        step.includes(i)? 0:data.push({key: undefined, step: i});
+    }
+    data.sort((a,b) => a.step-b.step)
 
-
-    var areaOuter = d3.area().defined(d=>d[property].mean)
-        .x(d=>lineChartX(new Date(d.time)))
-        .y0(d=>lineChartY(d[property].upperInnerFence))
-        .y1(d=>lineChartY(d[property].lowerInnerFence))
+    var areaOuter = d3.area().defined(d=>(d.key))
+        .x(d=>lineChartX(new Date(d.key)))
+        .y0(d=>lineChartY((d.dataformetric)[property].upperInnerFence))
+        .y1(d=>lineChartY((d.dataformetric)[property].lowerInnerFence))
         .curve(d3.curveCatmullRom.alpha(0.5));
 
     lineChartG.append("path").datum(data)
         .attr("class","lineChart"+location)
-        .attr("id","outerArea"+property+location)
+        .attr("id","outerArea"+rowLabelData[property]+location)
         .attr("fill",thisColor).style("opacity",outer_opacity)
         .attr("d", areaOuter)
         .attr("filter","url(#outerFilter"+location+")");
     //
-    var areaInner = d3.area().defined(d=>d[property].mean)
+    var areaInner = d3.area().defined(d=>(d.key))
         .x(d=>{
-            // console.log(d.lowerInnerFence + ", " + d.quartile1+", "+d.quartile3 +", "+d.median + ", " + d.upperInnerFence);
-            return lineChartX(new Date(d.time))})
-        .y0(d=>lineChartY(d[property].quartile1))
-        .y1(d=>lineChartY(d[property].quartile3))
+            return lineChartX(new Date(d.key))})
+        .y0(d=>lineChartY((d.dataformetric)[property].quartile1))
+        .y1(d=>lineChartY((d.dataformetric)[property].quartile3))
         .curve(d3.curveCatmullRom.alpha(0.5));
 
     lineChartG.append("path").datum(data)
         .attr("class","lineChart"+location)
-        .attr("id","innerArea"+property+location)
+        .attr("id","innerArea"+rowLabelData[property]+location)
         .attr("fill",thisColor).style("opacity",outer_opacity)
         .attr("d", areaInner)
         .attr("filter","url(#innerFilter"+location+")");
 
 
     //
-    var lineChartLine = d3.line().defined(d=>d[property].mean)
-        .x(d=>lineChartX(new Date(d.time)))
-        .y(d=>lineChartY(d[property].mean))
+    var lineChartLine = d3.line().defined(d=> (d.key))
+        .x(d=>{
+            // console.log(lineChartX(new Date(d.key)))
+            return lineChartX(new Date(d.key))
+        })
+        .y(d=>{
+            // console.log(lineChartY((d.dataformetric)[property].mean))
+            return lineChartY((d.dataformetric)[property].mean)
+
+        })
         .curve(d3.curveCatmullRom.alpha(0.5));
 
     lineChartG.append("path").datum(data)
         .attr("class","lineChart"+location)
-        .attr("id","parallelLine"+property+location)
+        .attr("id","parallelLine"+rowLabelData[property]+location)
         .attr("stroke",thisColor)
         .attr("stroke-width",normal_line_stroke_width)
         .attr("fill","none")
         .attr("d",lineChartLine)
-        .on("mouseover",d=>MouseOver(d))
-        .on("mouseout",d=>MouseOut(d))
 
-    // lineChartG.selectAll("lineChartRect").data(lineChart)
-    //     .enter().append("rect")
-    //     .attr("x",d=>{
-    //         // console.log((d.quartile1) + ", " + (d.quartile3));
-    //         return lineChartX(d.time)-5})
-    //     .attr("y",d=>lineChartY(d.quartile3))
-    //     // .attr("r",10)
-    //     .attr("fill","blue")
-    //     .attr("height",d=>((lineChartY(d.quartile1)-lineChartY(d.quartile3))))
-    //     .attr("width",6.4)
-    //     .style("opacity",0.6)
 }
 
 function MouseOver(data) {
     // console.log(data[0].location);
-    lineChartFeatures.forEach(d=>{
-        if(d==data[0].feature){
-            d3.select("#parallelLine"+d+data[0].location).attr("stroke-width",hover_line_stroke_width);
-            d3.select("#innerArea"+d+data[0].location).attr("filter",null);
-            d3.select("#outerArea"+d+data[0].location).attr("filter",null);
-            d3.select("#legendRect"+d+data[0].location).style("display",null);
-            d3.select("#legendText"+d+data[0].location).style("display",null);
-        }
-        else {
-            d3.select("#parallelLine"+d+data[0].location).attr("display","none");
-            d3.select("#innerArea"+d+data[0].location).attr("display","none");
-            d3.select("#outerArea"+d+data[0].location).attr("display","none");
-            d3.select("#legendRect"+d+data[0].location).style("display","none");
-            d3.select("#legendText"+d+data[0].location).style("display","none");
-        }
-    })
+    for (var location=1; location < 20; location ++) {
+        rowLabelData.forEach((d, i) => {
+            if (d == data) {
+                d3.select("#parallelLine" + d + location).attr("stroke-width", hover_line_stroke_width);
+                d3.select("#innerArea" + d + location).attr("filter", null);
+                d3.select("#outerArea" + d + location).attr("filter", null);
+                d3.select("#legendRect" + d + location).style("display", null);
+                d3.select("#legendText" + d + location).style("display", null);
+                d3.select("#legendDeviation" + d + location).style("display", null);
+            } else {
+                d3.select("#parallelLine" + d + location).attr("display", "none");
+                d3.select("#innerArea" + d + location).attr("display", "none");
+                d3.select("#outerArea" + d + location).attr("display", "none");
+                d3.select("#legendRect" + d + location).style("display", "none");
+                d3.select("#legendText" + d + location).style("display", "none");
+                d3.select("#legendDeviation" + d + location).style("display", "none");
+            }
+        })
+    }
 
 }
 
 function MouseOut(data){
 
-    var location = data[0].location;
-    lineChartFeatures.forEach(d=> {
-        if (d == data[0].feature) {
-            d3.select("#parallelLine" + data[0].feature + data[0].location).attr("stroke-width", normal_line_stroke_width);
-            d3.select("#innerArea" + data[0].feature + data[0].location).attr("filter", "url(#innerFilter"+location+")");
-          d3.select("#outerArea" + data[0].feature + data[0].location).attr("filter", "url(#outerFilter"+location+")");
-        } else {
-            d3.select("#parallelLine"+d+data[0].location).attr("display",null);
-            d3.select("#innerArea"+d+data[0].location).attr("display",null);
-            d3.select("#outerArea"+d+data[0].location).attr("display",null);
-            d3.select("#legendRect"+d+data[0].location).style("display",null);
-            d3.select("#legendText"+d+data[0].location).style("display",null);
-        }
-    });
-
+    for (var location=1; location < 20; location ++) {
+        rowLabelData.forEach(d => {
+            if (d == data) {
+                d3.select("#parallelLine" + d + location).attr("stroke-width", normal_line_stroke_width);
+                d3.select("#innerArea" + d + location).attr("filter", "url(#innerFilter" + location + ")");
+                d3.select("#outerArea" + d + location).attr("filter", "url(#outerFilter" + location + ")");
+            } else {
+                d3.select("#parallelLine" + d + location).attr("display", null);
+                d3.select("#innerArea" + d + location).attr("display", null);
+                d3.select("#outerArea" + d + location).attr("display", null);
+                d3.select("#legendRect" + d + location).style("display", null);
+                d3.select("#legendText" + d + location).style("display", null);
+                d3.select("#legendDeviation" + d + location).style("display", null);
+            }
+        });
+    }
 }
 
+
 function getMetrics(data) {
+    var temp = [];
+    // temp = data;
+    if (Array.isArray(data)) {
+        temp = data.map(d => d==-1?d=0:d=d)
+    }
+    else {
+        temp.push(data);
+        temp = temp.map(d => d==-1?d=0:d=d)
+    }
+
 
     var metrics = {};
     // console.log((data));
-    metrics.max = d3.max(data);
-    metrics.min = d3.min(data);
-    metrics.quartile1 = d3.quantile(data, 0.4);
-    metrics.quartile3 = d3.quantile(data, 0.6);
-    metrics.median = d3.median(data);
-    metrics.mean = d3.mean(data);
+    metrics.max = d3.max(temp);
+    metrics.min = d3.min(temp);
+    metrics.quartile1 = d3.quantile(temp, 0.25);
+    metrics.quartile3 = d3.quantile(temp, 0.75);
+    metrics.median = d3.median(temp);
+    metrics.mean = d3.mean(temp);
     metrics.iqr = metrics.quartile3 - metrics.quartile1;
-    metrics.lowerInnerFence = d3.quantile(data,0.2);
-    metrics.upperInnerFence = d3.quantile(data,0.78);
+    metrics.lowerInnerFence = metrics.quartile1 - 1.5*metrics.iqr;
+    metrics.upperInnerFence = metrics.quartile3 + 1.5*metrics.iqr
 
-    // console.log(metrics.quartile3);
-    //The inner fences are the closest value to the IQR without going past it (assumes sorted lists)
-
-    // var LIF = metrics.quartile1 - (1.5 * metrics.iqr);
-    // var UIF = metrics.quartile3 + (1.5 * metrics.iqr);
-    // for (var i = 0; i <= data.length; i++) {
-    //     if (data[i] < LIF) {
-    //         continue;
-    //     }
-    //     if (!metrics.lowerInnerFence && data[i] >= LIF) {
-    //         metrics.lowerInnerFence = data[i];
-    //         continue;
-    //     }
-    //     if (data[i] > UIF) {
-    //         metrics.upperInnerFence = data[i - 1];
-    //         break;
-    //     }
-    // }
-    //
-    // metrics.lowerOuterFence = metrics.quartile1 - (3 * metrics.iqr);
-    // metrics.upperOuterFence = metrics.quartile3 + (3 * metrics.iqr);
-    // if (!metrics.lowerInnerFence) {
-    //     metrics.lowerInnerFence = metrics.min;
-    // }
-    // if (!metrics.upperInnerFence) {
-    //     metrics.upperInnerFence = metrics.max;
-    // }
     // console.log(metrics);
     return metrics;
 
-}
-
-
-function objByPropertyAndLocation(array, properties, location) {
-    // console.log(array);
-    var temp = [];
-    array.forEach(d=>{
-        // console.log(d[properties]);
-        if(d.location == location) {
-            temp.push(+d[properties]);
-            // else {
-            //     temp.push(null);
-            // }
-        }
-        // console.log(d.time);
-    });
-    temp.sort((a,b)=>a-b);
-    // if(temp.length <= 0)
-    //     return getMetrics([0]);
-    return getMetrics(temp);
 }

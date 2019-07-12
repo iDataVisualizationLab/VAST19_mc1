@@ -5,7 +5,7 @@ const parseTimeMinute = d3.timeParse("%Y-%m-%d %H:%M:%S");
 const formatDayAndMin = d3.timeFormat("%m/%d/%Y %H:%M");
 const formatDayAndHour = d3.timeFormat("%m/%d/%Y %H");
 const observeTimebyhour = d3.timeParse("%m/%d/%Y %H");
-
+var rowLabelData = ["shake_intensity", "medical", "buidings", "power", "roads_bridges", "sewer_water"]
 //Time Format and Parsing
 // const parseTime = d3.timeParse("%m/%d/%Y %H:%M");
 // const formatTimeDay = d3.timeFormat("%d");
@@ -103,7 +103,7 @@ d3.csv("./Dataset/data-optimized.csv", function (err, rows) {
 
                 var temp_store = d2.filter(function (d3) {
                     return d3 != -1;
-                    
+
                 })
                 array_report.push(temp_store.length)
                 if (temp_store.length == 0) {
@@ -145,7 +145,7 @@ d3.csv("./Dataset/data-optimized.csv", function (err, rows) {
     colorScale = d3.scaleQuantize()
         .domain([0, 10])
         .range(colors);
-    rowLabelData = ["shake_intensity", "medical", "buidings", "power", "roads_bridges", "sewer_water"]
+
 
     //Draw initial heatmap in every 5 minute
     Update_heatmap(array_data_total, cellSize, 2840)
@@ -162,6 +162,7 @@ d3.csv("./Dataset/data-optimized.csv", function (err, rows) {
             initialize(j);
         }
     });
+    drawLinegraph(array_data_total)
 
 });
 
@@ -189,43 +190,50 @@ function updatebyhour() {
             let temp_data = [];
             d1.step = timestep.indexOf(d1.key)
             d1.values.forEach(d2 => {
-               temp_value.push(d2.noreport);
-               temp_data.push(d2.data);
+                temp_value.push(d2.noreport);
+                temp_data.push(d2.data);
                 d1.location = d2.location;
             })
-                collect_value_data  = _.unzip(temp_data);
-                collect_report_data = _.unzip(temp_value);
-                // console.log(collect_report_data)
-            var report=[];
-                collect_report_data.forEach( d3 => {
+            collect_value_data = _.unzip(temp_data);
+            collect_report_data = _.unzip(temp_value);
+            // console.log(collect_report_data)
+            var report = [];
+            collect_report_data.forEach(d3 => {
                 report.push(d3.reduce(reducer));
-                })
+            })
 
-                var get_mean = [];
-            collect_value_data.forEach( (d,i) => {
+            var get_mean = [];
+            collect_value_data.forEach((d, i) => {
                 var sum = 0;
                 for (var j = 0; j < collect_report_data[0].length; j++) {
-                    sum += d[j]*collect_report_data[i][j]
+                    sum += d[j] * collect_report_data[i][j]
                 }
                 get_mean.push(sum)
 
             })
-            d1.data = get_mean.map(function(n, i) {
+            d1.data = get_mean.map(function (n, i) {
                 if (report[i] != 0) {
-                return n / report[i];
-                }
-                else{
+                    return n / report[i];
+                } else {
                     return n = -1;
                 }
             });
             d1.noreport = report;
             d1.time_origin = d1.key.split('G')[0]
+            var metrics = [];
+            collect_value_data.forEach(d => {
+
+                    metrics.push(getMetrics(d))
+
+            })
+
+
+            d1.dataformetric = metrics;
 
         })
 
     });
-    // console.log(array_data_by_hour)
-
+    console.log(array_data_by_hour)
     Update_heatmap(array_data_by_hour, cellSize, 1840)
 
 }
@@ -635,3 +643,103 @@ function showLineGraph(){
     }
 
 }
+
+function drawLinegraph(array_data_total){
+    for (i=1; i<20; i++){
+        d3.select("#svg"+i).remove()
+    }
+    var timestep = [];
+    var array_data_by_hour = [];
+    var collect_standard_deviation = [];
+    array_data_total.forEach( d => {
+        array_data_by_hour.push(d3.nest().key(d => d.time_hour).entries(d));
+    });
+    array_data_by_hour[1].forEach(d => timestep.push(d.key))
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    var collect_report_data = [];
+    var collect_value_data = [];
+    array_data_by_hour.forEach(d => {
+        let temp_deviation = [];
+        d.forEach(d1 => {
+            let temp_value = [];
+            let temp_data = [];
+            d1.step = timestep.indexOf(d1.key)
+            d1.values.forEach(d2 => {
+                temp_value.push(d2.noreport);
+                temp_data.push(d2.data);
+                d1.location = d2.location;
+            })
+            collect_value_data = _.unzip(temp_data);
+            collect_report_data = _.unzip(temp_value);
+            // console.log(collect_report_data)
+            var report = [];
+            collect_report_data.forEach(d3 => {
+                report.push(d3.reduce(reducer));
+            })
+
+            var get_mean = [];
+            collect_value_data.forEach((d, i) => {
+                var sum = 0;
+                for (var j = 0; j < collect_report_data[0].length; j++) {
+                    sum += d[j] * collect_report_data[i][j]
+                }
+                get_mean.push(sum)
+
+            })
+            d1.data = get_mean.map(function (n, i) {
+                if (report[i] != 0) {
+                    return n / report[i];
+                } else {
+                    return n = -1;
+                }
+            });
+            d1.noreport = report;
+            d1.time_origin = d1.key.split('G')[0]
+            var metrics = [];
+            collect_value_data.forEach(d => {
+
+                metrics.push(getMetrics(d))
+
+            })
+
+
+            d1.dataformetric = metrics;
+
+            temp_deviation.push(collect_value_data)
+
+        })
+        collect_standard_deviation.push(temp_deviation)
+        // console.log(collect_standard_deviation)
+    });
+    var temp_deviation_array1 = [];
+    var temp_deviation_array2= [];
+    collect_standard_deviation.forEach(d => temp_deviation_array1.push(_.unzip(d)));
+    var deviation_value= [];
+    temp_deviation_array1.forEach( d => {
+        var store_array = [];
+        var store_array1 = [];
+        d.forEach(d1 => {
+            store_array = d1.flat();
+            store_array = store_array.map( value =>
+            value==-1?value=null:value
+            )
+            store_array1.push(d3.deviation(store_array))
+
+    })
+        deviation_value.push(store_array1)
+        console.log(deviation_value)
+
+    })
+
+
+    var timeRange = d3.extent(array_data_total[1],d=>d.time_hour);
+    lineChartX.domain(timeRange);
+    // console.log(lineChart)
+    // Draw all location
+    for (var loc = 1; loc < 20; loc ++) {
+        generateLocationSvg(array_data_by_hour, loc, deviation_value);
+    }
+
+}
+
+

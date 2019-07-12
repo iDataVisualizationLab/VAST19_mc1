@@ -172,6 +172,7 @@ function filterGeoTimeRange(timeRange) {
     svg_heatmap.selectAll("g").remove();
     var cellSize = 4;
     Update_heatmap(selectedHeatmap_data, cellSize,1840)
+    drawLinegraph(selectedHeatmap_data)
 
     // console.log("to6")
 }
