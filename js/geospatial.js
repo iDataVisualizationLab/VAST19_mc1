@@ -155,6 +155,14 @@ function filterGeoTimeRange(timeRange) {
     var selectedGeoData = array_data_total.flat().filter(function (d) {
         return timeRange[0] <= d.time && d.time <= timeRange[1];
     });
+    console.log(selectedGeoData)
+    var check_full_location = [];
+    var location_in_geo = [];
+    check_full_location = d3.nest().key(d=>d.location).entries(selectedGeoData)
+    check_full_location.forEach(d=>location_in_geo.push(d.key))
+    for (i=1; i<20; i++){
+        location_in_geo.includes(i)? 0:selectedGeoData.push({data: [0,0,0,0,0,0], step: i, noreport: [0,0,0,0,0,0], location: i});
+    }
     var geo_data = analyzed_geo_data(selectedGeoData)
 
     // console.log(geo_data)
@@ -181,11 +189,12 @@ function updateGeoFill(i,geo_data) {
     for (var location =1; location < 20; location ++) {
 
         d3.select("#geo" + i + location).attr("fill", function () {
-            if ((geo_data[location-1].value)[i] < 0){
-                return "white"
+            (geo_data[location-1].value)[i]==undefined?(geo_data[location-1].value)[i]=0:0;
+            if ((geo_data[location-1].value)[i] > 0) {
+                return colorScale((geo_data[location - 1].value)[i]);
             }
             else {
-                return colorScale((geo_data[location - 1].value)[i])
+               return "white";
             }
         })
             .attr("stroke-width", function () {

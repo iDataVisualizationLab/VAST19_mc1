@@ -1,12 +1,12 @@
 // Info to show visualization
-var lineChartWidth = 600, lineChartHeight = 200,
-    lineChartMargin = {top: 30, right: 20, bottom: 30, left: 50},
+var lineChartWidth = 600, lineChartHeight = 160,
+    lineChartMargin = {top: 10, right: 20, bottom: 10, left: 50},
     lineChartContentWidth = lineChartWidth - lineChartMargin.left - lineChartMargin.right,
     lineChartContentHeight = lineChartHeight - lineChartMargin.top - lineChartMargin.bottom;
 
 // x, y, and color Scale
 var lineChartX = d3.scaleTime().range([0, lineChartContentWidth]),
-    lineChartY = d3.scaleLinear().range([0,lineChartContentHeight-100]).domain([10,0]),
+    lineChartY = d3.scaleLinear().range([0,lineChartContentHeight-50]).domain([10,0]),
     lineChartColor = d3.scaleOrdinal().range(d3.schemeCategory10);
 
 // axises definition
@@ -40,7 +40,7 @@ let selectionPanel = d3.select("#box-plot")
     .append("div")
     .attr("class", "floatingBox")
     .style("left", (180) + "px")
-    .style("top", (20) + "px");
+    .style("top", (620) + "px");
 
 d3.selectAll(".floatingBox").call(d3.drag()
     .on("start", boxDragStarted)
@@ -51,7 +51,9 @@ d3.selectAll(".floatingBox").call(d3.drag()
 selectionPanel.append("div")
     .attr("class", "floatingBoxHeader")
     .html("<div>" +
-        "---------------- Box-plot and Standard Deviation Visualiazation for Uncertainty ---------------" +
+        "-------------------------------------------------------------------------------------- " +
+        "Box-plot and Standard Deviation Visualiazation for Uncertainty " +
+        "---------------------------------------------------------------------------------------" +
         "</div>");
 
 let panelContent = selectionPanel.append("div")
@@ -59,16 +61,17 @@ let panelContent = selectionPanel.append("div")
     .attr("id", "mapContent");
 
 // Generate svg, g, and lines
-function generateLocationSvg(lineChart,location, standard_deviation, min_value) {
+function generateLocationSvg(lineChart,location, standard_deviation, min_value, sample, max_value) {
 
-
+    var sort_max_value = max_value.map(d=> d.sort((a,b)=>b-a));
+    var sort_min_value = min_value.map(d=> d.sort((a,b)=>a-b));
     var svg = panelContent.append("svg").attr("id","svg"+location).attr("width", lineChartWidth).attr("height", lineChartHeight),
-        g = svg.append("g").attr("id","g"+location).attr("transform", "translate(" + lineChartMargin.left + "," + 100 + ")");
+        g = svg.append("g").attr("id","g"+location).attr("transform", "translate(" + lineChartMargin.left + "," + 50 + ")");
 
     // Draw axises
     g.append("g")
         .attr("class", "grid")
-        .attr("transform", "translate(0, " + 40 + ")").call(lineChartXAxis);
+        .attr("transform", "translate(0, " + 90 + ")").call(lineChartXAxis);
     g.append("g")
         .attr("class", "grid").call(lineChartYAxis);
 
@@ -93,7 +96,7 @@ function generateLocationSvg(lineChart,location, standard_deviation, min_value) 
     // console.log(rowLabelData);
 
     // Append title of graph
-    g.append("text").attr("x",50).attr("y",-50)
+    g.append("text").attr("x",50).attr("y",0)
         .text("Location " + neighborHood[+location-1].name)
         .style("font-size","8px");
 
@@ -119,8 +122,15 @@ function generateLocationSvg(lineChart,location, standard_deviation, min_value) 
     legend.selectAll(".legendDeviation").data(standard_deviation[location-1]).enter().append("text")
         .attr("class","legendDeviation").attr("id",(d,i)=>"legendDeviation"+rowLabelData[i]+location)
         .attr("x", (d,i)=>i*80+10)
-        .attr("y", 14).text(d=>(d!=undefined)?d.toFixed(2):"NaN")
+        .attr("y", 16).text((d,i)=>(d!=undefined)?"SD: "+d.toFixed(2)+ " #"+(sort_min_value[i].indexOf(d)+1):"NaN")
         .style("fill", (d,i)=> d==d3.min((min_value)[i])?"red":"black")
+        .style("font-size","10px")
+
+    legend.selectAll(".legendSample").data(sample[location-1]).enter().append("text")
+        .attr("class","legendSample").attr("id",(d,i)=>"legendSample"+rowLabelData[i]+location)
+        .attr("x", (d,i)=>i*80+10)
+        .attr("y", 24).text((d,i)=>(d!=undefined)?"Reports: "+d + " #" +(sort_max_value[i].indexOf(d)+1):"0")
+        .style("fill", (d,i)=> d==d3.max((max_value)[i])?"blue":"black")
         .style("font-size","10px")
 
 
@@ -147,18 +157,18 @@ function drawLine(lineChart,property,location) {
     }
     data.sort((a,b) => a.step-b.step)
 
-    var areaOuter = d3.area().defined(d=>(d.key))
-        .x(d=>lineChartX(new Date(d.key)))
-        .y0(d=>lineChartY((d.dataformetric)[property].upperInnerFence))
-        .y1(d=>lineChartY((d.dataformetric)[property].lowerInnerFence))
-        .curve(d3.curveCatmullRom.alpha(0.5));
-
-    lineChartG.append("path").datum(data)
-        .attr("class","lineChart"+location)
-        .attr("id","outerArea"+rowLabelData[property]+location)
-        .attr("fill",thisColor).style("opacity",outer_opacity)
-        .attr("d", areaOuter)
-        .attr("filter","url(#outerFilter"+location+")");
+    // var areaOuter = d3.area().defined(d=>(d.key))
+    //     .x(d=>lineChartX(new Date(d.key)))
+    //     .y0(d=>lineChartY((d.dataformetric)[property].max))
+    //     .y1(d=>lineChartY((d.dataformetric)[property].min))
+    //     .curve(d3.curveCatmullRom.alpha(0.5));
+    //
+    // lineChartG.append("path").datum(data)
+    //     .attr("class","lineChart"+location)
+    //     .attr("id","outerArea"+rowLabelData[property]+location)
+    //     .attr("fill",thisColor).style("opacity",outer_opacity)
+    //     .attr("d", areaOuter)
+    //     .attr("filter","url(#outerFilter"+location+")");
     //
     var areaInner = d3.area().defined(d=>(d.key))
         .x(d=>{
@@ -170,7 +180,7 @@ function drawLine(lineChart,property,location) {
     lineChartG.append("path").datum(data)
         .attr("class","lineChart"+location)
         .attr("id","innerArea"+rowLabelData[property]+location)
-        .attr("fill",thisColor).style("opacity",outer_opacity)
+        .attr("fill",thisColor).style("opacity",0.6)
         .attr("d", areaInner)
         .attr("filter","url(#innerFilter"+location+")");
 
@@ -183,7 +193,7 @@ function drawLine(lineChart,property,location) {
         })
         .y(d=>{
             // console.log(lineChartY((d.dataformetric)[property].mean))
-            return lineChartY((d.dataformetric)[property].mean)
+            return lineChartY((d.dataformetric)[property].median)
 
         })
         .curve(d3.curveCatmullRom.alpha(0.5));
@@ -209,6 +219,7 @@ function MouseOver(data) {
                 d3.select("#legendRect" + d + location).style("display", null);
                 d3.select("#legendText" + d + location).style("display", null);
                 d3.select("#legendDeviation" + d + location).style("display", null);
+                d3.select("#legendSample" + d + location).style("display", null);
             } else {
                 d3.select("#parallelLine" + d + location).attr("display", "none");
                 d3.select("#innerArea" + d + location).attr("display", "none");
@@ -216,6 +227,7 @@ function MouseOver(data) {
                 d3.select("#legendRect" + d + location).style("display", "none");
                 d3.select("#legendText" + d + location).style("display", "none");
                 d3.select("#legendDeviation" + d + location).style("display", "none");
+                d3.select("#legendSample" + d + location).style("display", "none");
             }
         })
     }
@@ -237,6 +249,7 @@ function MouseOut(data){
                 d3.select("#legendRect" + d + location).style("display", null);
                 d3.select("#legendText" + d + location).style("display", null);
                 d3.select("#legendDeviation" + d + location).style("display", null);
+                d3.select("#legendSample" + d + location).style("display", null);
             }
         });
     }
@@ -246,24 +259,24 @@ function MouseOut(data){
 
 function getMetrics(data) {
     var temp = [];
-    // temp = data;
+    temp = data;
     if (Array.isArray(data)) {
-        temp = data.map(d => d==-1?d=0:d=d)
+        temp = data.flat().map(d => d==-1?d=0:d=d)
     }
     else {
         temp.push(data);
         temp = temp.map(d => d==-1?d=0:d=d)
     }
-
+    // temp = temp.flat()
 
     var metrics = {};
     // console.log((data));
-    metrics.max = d3.max(temp);
-    metrics.min = d3.min(temp);
-    metrics.quartile1 = d3.quantile(temp, 0.25);
-    metrics.quartile3 = d3.quantile(temp, 0.75);
-    metrics.median = d3.median(temp);
-    metrics.mean = d3.mean(temp);
+    metrics.max = math.max(temp.flat());
+    metrics.min = math.min(temp.flat());
+    metrics.quartile1 = d3.quantile(temp.flat(), 0.25);
+    metrics.quartile3 = d3.quantile(temp.flat(), 0.75);
+    metrics.median = d3.median(temp.flat());
+    metrics.mean = d3.mean(temp.flat());
     metrics.iqr = metrics.quartile3 - metrics.quartile1;
     metrics.lowerInnerFence = metrics.quartile1 - 1.5*metrics.iqr;
     metrics.upperInnerFence = metrics.quartile3 + 1.5*metrics.iqr

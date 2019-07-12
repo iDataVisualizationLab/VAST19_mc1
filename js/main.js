@@ -83,9 +83,10 @@ d3.csv("./Dataset/data-optimized.csv", function (err, rows) {
 
         //create temp array to store information of each time step
         let array_data_mean3 = [];
+        let array_data_with_null = [];
 
         d.forEach(d1 => {
-
+            // array_data_with_null.push(d1.value)
             collect_data_by_feature = _.unzip(d1.value);
 
             //store mean value of each feature in each time step
@@ -121,7 +122,8 @@ d3.csv("./Dataset/data-optimized.csv", function (err, rows) {
                 "location": parseInt(d1.location),
                 "time": parseTimeMinute(time_step_origin[d1.step]),
                 "time_origin": time_step_origin[d1.step],
-                "time_hour": d1.time_hour
+                "time_hour": d1.time_hour,
+                "DeviationData": collect_data_by_feature
             })
 
         })
@@ -233,7 +235,7 @@ function updatebyhour() {
         })
 
     });
-    console.log(array_data_by_hour)
+    // console.log(array_data_by_hour)
     Update_heatmap(array_data_by_hour, cellSize, 1840)
 
 }
@@ -655,48 +657,33 @@ function drawLinegraph(array_data_total){
         array_data_by_hour.push(d3.nest().key(d => d.time_hour).entries(d));
     });
     array_data_by_hour[1].forEach(d => timestep.push(d.key))
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    // const reducer = (accumulator, currentValue) => accumulator + currentValue;
     var collect_report_data = [];
     var collect_value_data = [];
+    var collect_test_data = [];
     array_data_by_hour.forEach(d => {
         let temp_deviation = [];
         d.forEach(d1 => {
             let temp_value = [];
             let temp_data = [];
+            let test_data = []
             d1.step = timestep.indexOf(d1.key)
             d1.values.forEach(d2 => {
                 temp_value.push(d2.noreport);
                 temp_data.push(d2.data);
-                d1.location = d2.location;
+                test_data.push(d2.DeviationData);
             })
+            if (test_data[0].length==1){
+            collect_test_data = _.unzip(test_data.flat())
+            }
+            else{
+                collect_test_data = _.unzip(test_data)
+            }
+
             collect_value_data = _.unzip(temp_data);
             collect_report_data = _.unzip(temp_value);
-            // console.log(collect_report_data)
-            var report = [];
-            collect_report_data.forEach(d3 => {
-                report.push(d3.reduce(reducer));
-            })
-
-            var get_mean = [];
-            collect_value_data.forEach((d, i) => {
-                var sum = 0;
-                for (var j = 0; j < collect_report_data[0].length; j++) {
-                    sum += d[j] * collect_report_data[i][j]
-                }
-                get_mean.push(sum)
-
-            })
-            d1.data = get_mean.map(function (n, i) {
-                if (report[i] != 0) {
-                    return n / report[i];
-                } else {
-                    return n = -1;
-                }
-            });
-            d1.noreport = report;
-            d1.time_origin = d1.key.split('G')[0]
             var metrics = [];
-            collect_value_data.forEach(d => {
+            collect_test_data.forEach(d => {
 
                 metrics.push(getMetrics(d))
 
@@ -705,7 +692,7 @@ function drawLinegraph(array_data_total){
 
             d1.dataformetric = metrics;
 
-            temp_deviation.push(collect_value_data)
+            temp_deviation.push(collect_test_data)
 
         })
         collect_standard_deviation.push(temp_deviation)
@@ -715,31 +702,43 @@ function drawLinegraph(array_data_total){
     var temp_deviation_array2= [];
     collect_standard_deviation.forEach(d => temp_deviation_array1.push(_.unzip(d)));
     var deviation_value= [];
-    temp_deviation_array1.forEach( d => {
+    var store_sample_length = [];
+    (temp_deviation_array1).forEach( d => {
         var store_array = [];
         var store_array1 = [];
+
+        var store_length = [];
         d.forEach(d1 => {
+            var store_array2 = [];
             store_array = d1.flat();
-            store_array = store_array.map( value =>
-            value==-1?value=null:value
-            )
-            store_array1.push(d3.deviation(store_array))
+            // console.log(store_array)
+            // store_array = store_array.map( value =>
+            // value==-1?value=null:value
+            // )
+            (store_array.flat()).forEach( d=> (d!= -1)?store_array2.push(d):0)
+            // console.log(store_array2)
+            store_length.push(store_array2.length)
+            store_array1.push(d3.deviation(store_array2))
 
     })
+        store_sample_length.push(store_length)
         deviation_value.push(store_array1)
-        console.log(deviation_value)
+        // console.log(deviation_value)
 
     })
 
 
     var timeRange = d3.extent(array_data_total[1],d=>d.time_hour);
     lineChartX.domain(timeRange);
-    // console.log(lineChart)
+    console.log(array_data_by_hour)
     //get the min value of deviation
     var min_value = _.unzip(deviation_value);
+    var max_value = _.unzip(store_sample_length)
+    console.log(min_value)
+    console.log(max_value)
     // Draw all location
     for (var loc = 1; loc < 20; loc ++) {
-        generateLocationSvg(array_data_by_hour, loc, deviation_value, min_value);
+        generateLocationSvg(array_data_by_hour, loc, deviation_value, min_value, store_sample_length, max_value);
     }
 
 }

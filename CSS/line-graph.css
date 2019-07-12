@@ -55,6 +55,7 @@
     top: 50px;
     left: 1900px;
     visibility: hidden;
+    width: 1500px;
 }
 .floatingBox {
     position: absolute;
