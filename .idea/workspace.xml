@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6db8f5fa-6d65-4b28-b31a-f99ed22100a9" name="Default Changelist" comment="" />
+    <list default="true" id="6db8f5fa-6d65-4b28-b31a-f99ed22100a9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -655,11 +657,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102619000" />
+    <option name="totallyTimeSpent" value="102613000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48866856" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" sideWeight="0.51133144" side_tool="true" weight="0.24983476" />
@@ -757,71 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/VAST2018-master/VAST2018-master/mc2/index.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" selection-end-column="113" />
-          <folding>
-            <element signature="e#7042#7048#0" expanded="true" />
-            <element signature="e#7075#7081#0" expanded="true" />
-            <element signature="e#7093#7099#0" expanded="true" />
-            <element signature="e#7469#7475#0" expanded="true" />
-            <element signature="e#7869#7875#1" expanded="true" />
-            <element signature="e#7899#7905#1" expanded="true" />
-            <element signature="e#8157#8164#0" expanded="true" />
-            <element signature="e#9219#9225#1" expanded="true" />
-            <element signature="e#11611#11618#0" expanded="true" />
-            <element signature="e#11627#11634#0" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#21;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#span#0;n#p#21;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#12795#12801#0" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#25;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#span#0;n#p#25;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#33;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#span#0;n#p#33;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#36;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#span#0;n#p#36;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#39;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#span#0;n#p#39;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#42;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#span#0;n#p#42;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#22953#22959#0" expanded="true" />
-            <element signature="e#24033#24039#0" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#47;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#span#0;n#p#47;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#50;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#span#0;n#p#50;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#25854#25860#0" expanded="true" />
-            <element signature="e#25980#25986#1" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#p#53;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#span#0;n#p#53;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#31098#31104#1" expanded="true" />
-            <element signature="e#31883#31889#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/Ngan VAST 2019 MC1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2431">
-          <caret line="143" column="41" selection-start-line="143" selection-start-column="41" selection-end-line="143" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/MC1/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="893">
-          <caret line="1238" column="52" selection-start-line="1238" selection-start-column="52" selection-end-line="1238" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -1250,6 +1186,57 @@
             <element signature="e#41232#41238#1" expanded="true" />
             <element signature="e#41278#41284#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/VAST2018-master/VAST2018-master/mc2/index.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="113" />
+          <folding>
+            <element signature="e#7042#7048#0" expanded="true" />
+            <element signature="e#7075#7081#0" expanded="true" />
+            <element signature="e#7093#7099#0" expanded="true" />
+            <element signature="e#7469#7475#0" expanded="true" />
+            <element signature="e#7869#7875#1" expanded="true" />
+            <element signature="e#7899#7905#1" expanded="true" />
+            <element signature="e#8157#8164#0" expanded="true" />
+            <element signature="e#9219#9225#1" expanded="true" />
+            <element signature="e#11611#11618#0" expanded="true" />
+            <element signature="e#11627#11634#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#21;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#21;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#12795#12801#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#25;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#25;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#33;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#33;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#36;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#36;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#39;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#39;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#42;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#42;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#22953#22959#0" expanded="true" />
+            <element signature="e#24033#24039#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#47;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#47;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#50;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#50;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#25854#25860#0" expanded="true" />
+            <element signature="e#25980#25986#1" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#53;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#53;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#31098#31104#1" expanded="true" />
+            <element signature="e#31883#31889#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
         </state>
       </provider>
     </entry>
