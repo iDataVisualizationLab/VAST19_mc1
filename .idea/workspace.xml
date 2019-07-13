@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6db8f5fa-6d65-4b28-b31a-f99ed22100a9" name="Default Changelist" comment="" />
+    <list default="true" id="6db8f5fa-6d65-4b28-b31a-f99ed22100a9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/colorschememapping.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/filelist.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image001.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image002.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image003.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image004.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image005.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image006.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image007.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/themedata.thmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnswerSheet/~$ST Challenge 2019 MC1 Answer Sheet.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Video/New Text Document.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/lineChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="476">
               <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
             </state>
           </provider>
@@ -25,17 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/geospatial.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
+            <state relative-caret-position="3094">
               <caret line="182" column="15" selection-start-line="182" selection-start-column="15" selection-end-line="182" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -58,20 +67,49 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CSS/default.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-34">
+              <caret line="29" column="16" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="406" column="20" selection-start-line="406" selection-start-column="20" selection-end-line="406" selection-end-column="20" />
+            <state relative-caret-position="278">
+              <caret line="453" column="149" selection-start-line="453" selection-start-column="26" selection-end-line="453" selection-end-column="149" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="74" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#a#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#a#0;n#li#2;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>linechartline</find>
       <find>console.log(array</find>
       <find>timerange</find>
       <find>draw</find>
@@ -101,6 +139,7 @@
       <find>Nan</find>
       <find>test_dat</find>
       <find>sample</find>
+      <find>location</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,11 +150,13 @@
       <list>
         <option value="$PROJECT_DIR$/lib/colorbrewer.v1.min.js" />
         <option value="$PROJECT_DIR$/CSS/style.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/CSS/line-graph.css" />
         <option value="$PROJECT_DIR$/js/geospatial.js" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/js/lineChart.js" />
+        <option value="$PROJECT_DIR$/js/index.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/CSS/default.css" />
       </list>
     </option>
   </component>
@@ -159,6 +200,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/VAST2019mc3-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -193,18 +235,19 @@
       <workItem from="1562727238830" duration="10388000" />
       <workItem from="1562812704217" duration="12098000" />
       <workItem from="1562860623118" duration="35748000" />
-      <workItem from="1562952496640" duration="12742000" />
+      <workItem from="1562952496640" duration="13357000" />
+      <workItem from="1562995134538" duration="1078000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98535000" />
+    <option name="totallyTimeSpent" value="100228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48866856" weight="0.24983476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48866856" visible="true" weight="0.24983476" />
       <window_info id="Structure" order="1" sideWeight="0.51133144" side_tool="true" weight="0.24983476" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -260,10 +303,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/js/lineChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+        <state relative-caret-position="476">
+          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/geospatial.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3094">
+          <caret line="182" column="15" selection-start-line="182" selection-start-column="15" selection-end-line="182" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -274,6 +324,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="453" column="149" selection-start-line="453" selection-start-column="26" selection-end-line="453" selection-end-column="149" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CSS/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6035">
@@ -281,24 +345,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/geospatial.js">
+    <entry file="file://$PROJECT_DIR$/CSS/default.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="182" column="15" selection-start-line="182" selection-start-column="15" selection-end-line="182" selection-end-column="15" />
+        <state relative-caret-position="-34">
+          <caret line="29" column="16" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/lineChart.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="406" column="20" selection-start-line="406" selection-start-column="20" selection-end-line="406" selection-end-column="20" />
+        <state relative-caret-position="289">
+          <caret line="17" column="74" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#a#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#a#0;n#li#2;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
