@@ -67,7 +67,8 @@ Priotize the reponse based on the level of damage over-time.
 ### Question 2: 
 In this question, we focus on two things, the number of the report and the damage level on each report, to determine uncertainty of a location.
 - In this challenge we focus on the times that has large amount of reports which is showed in two following pictures
-![Number of report]()
+![Number of report1](https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/large%20number%20of%20reports%201.png)</br>
+![Number of report2](https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/large%20number%20of%20reports%202.png)</br>
 - From that time in large amount of reports, we use mean and quartiles to focus on uncertainty of each damgage feature on each location. With the line graph, we make some blur for the range of quartiles, which means further from mean, the more blur in the line graph, which leads to more uncertainty at that time in that location. </br>
 
 ![Location 11 - Terrapin Springs](https://github.com/Nhatmusic/CS5331-Project-3/blob/master/images/observations/location%2011%20-%20line%20graph.png)
@@ -80,9 +81,9 @@ Some reasons lead to this uncertainty are people has different damage level anal
 
 In the limit in this report, we will focus on large number of the reports, at the time before 12PM on Wed 08 (red oval mark in above picture) </br> 
     + Based on the time, we note some location with higher number of reports, which are Palice Hills, Old Town, Scenic Vista, BroadView, and Easton. 
-    ![5 location noted]()
-    ![Palace Hills and Old Towns]Palace Hills and Old Towns()
-    ![Scenic Vista and BroadView]Scenic Vista and BroadView()
-    ![Easton]Easton()
+    ![5 location noted](https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/locations%20with%20one%20large%20number%20of%20reports.png)
+    ![Palace Hills and Old Towns]Palace Hills and Old Towns(https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/Palace%20Hills%20and%20Old%20Towns.png)
+    ![Scenic Vista and BroadView]Scenic Vista and BroadView(https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/Scenic%20Vista%2C%20BroadView.png)
+    ![Easton]Easton(https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/Easton.png)
     In this time, we saw Palace Hills is the most certain, and other locations which is close to the earthquake lose some report data. 
     
