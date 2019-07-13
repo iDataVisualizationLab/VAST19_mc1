@@ -2,23 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6db8f5fa-6d65-4b28-b31a-f99ed22100a9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/colorschememapping.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/filelist.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image001.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image002.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image003.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image004.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image005.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image006.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/image007.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/VAST Challenge 2019 MC1 Answer Sheet_files/themedata.thmx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnswerSheet/~$ST Challenge 2019 MC1 Answer Sheet.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Video/New Text Document.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index.htm" beforeDir="false" afterPath="$PROJECT_DIR$/TTU-Nhat-MC1/index.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/filelist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/filelist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image002.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image004.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image006.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image008.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image010.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image012.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image014.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image016.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image018.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image023.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image028.jpg" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -71,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/CSS/default.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-34">
-              <caret line="29" column="16" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+              <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -88,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="74" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
+            <state relative-caret-position="153">
+              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#a#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
@@ -236,12 +233,12 @@
       <workItem from="1562812704217" duration="12098000" />
       <workItem from="1562860623118" duration="35748000" />
       <workItem from="1562952496640" duration="13357000" />
-      <workItem from="1562995134538" duration="1078000" />
+      <workItem from="1562995134538" duration="1517000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100228000" />
+    <option name="totallyTimeSpent" value="100667000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -348,14 +345,14 @@
     <entry file="file://$PROJECT_DIR$/CSS/default.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-34">
-          <caret line="29" column="16" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="74" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
+        <state relative-caret-position="153">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding>
             <element signature="n#style#0;n#span#0;n#a#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
