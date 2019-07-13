@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6db8f5fa-6d65-4b28-b31a-f99ed22100a9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index.htm" beforeDir="false" afterPath="$PROJECT_DIR$/TTU-Nhat-MC1/index.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/filelist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/filelist.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image002.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image004.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image006.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image008.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image010.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image012.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image014.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image016.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image018.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image023.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/index_files/image028.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TTU-Nhat-MC1/~$index.htm" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -85,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+            <state relative-caret-position="136">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#a#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
@@ -154,6 +141,8 @@
         <option value="$PROJECT_DIR$/js/index.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/CSS/default.css" />
+        <option value="$USER_HOME$/Downloads/VAST2018-master/VAST2018-master/mc2/index.htm" />
+        <option value="$PROJECT_DIR$/TTU-Nhat-MC1/index.htm" />
       </list>
     </option>
   </component>
@@ -188,6 +177,11 @@
               <item name="VAST19_mc1" type="b2602c69:ProjectViewProjectNode" />
               <item name="VAST19_mc1" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VAST19_mc1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VAST19_mc1" type="462c0819:PsiDirectoryNode" />
+              <item name="TTU-Nhat-MC1" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -233,12 +227,12 @@
       <workItem from="1562812704217" duration="12098000" />
       <workItem from="1562860623118" duration="35748000" />
       <workItem from="1562952496640" duration="13357000" />
-      <workItem from="1562995134538" duration="1517000" />
+      <workItem from="1562995134538" duration="3459000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100667000" />
+    <option name="totallyTimeSpent" value="102609000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -349,10 +343,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TTU-Nhat-MC1/index.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/VAST2018-master/VAST2018-master/mc2/index.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="113" />
+          <folding>
+            <element signature="e#7042#7048#0" expanded="true" />
+            <element signature="e#7075#7081#0" expanded="true" />
+            <element signature="e#7093#7099#0" expanded="true" />
+            <element signature="e#7469#7475#0" expanded="true" />
+            <element signature="e#7869#7875#1" expanded="true" />
+            <element signature="e#7899#7905#1" expanded="true" />
+            <element signature="e#8157#8164#0" expanded="true" />
+            <element signature="e#9219#9225#1" expanded="true" />
+            <element signature="e#11611#11618#0" expanded="true" />
+            <element signature="e#11627#11634#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#21;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#21;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#12795#12801#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#25;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#25;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#33;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#33;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#36;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#36;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#39;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#39;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#42;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#42;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#22953#22959#0" expanded="true" />
+            <element signature="e#24033#24039#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#47;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#47;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#50;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#50;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#25854#25860#0" expanded="true" />
+            <element signature="e#25980#25986#1" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#53;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#span#0;n#p#53;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#31098#31104#1" expanded="true" />
+            <element signature="e#31883#31889#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
           <folding>
             <element signature="n#style#0;n#span#0;n#a#0;n#li#0;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#a#0;n#li#1;n#ul#0;n#nav#0;n#div#0;n#div#0;n#body#0;n#html#1;n#!!top" expanded="true" />
