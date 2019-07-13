@@ -77,13 +77,13 @@ In these pictures that show the location is certain because of few blur in the g
 Besides, we compare to locations that has uncertain reports for whole time. 
 ![Location 15 - Weston](https://github.com/Nhatmusic/CS5331-Project-3/blob/master/images/observations/location%2015%20-%20line%20graph.png)
 and ![Location 9 - Broadviews](https://github.com/Nhatmusic/CS5331-Project-3/blob/master/images/observations/location%209%20-%20line%20graph.png)
-Some reasons lead to this uncertainty are people has different damage level analyzes which is personals' view. On the map, I saw location 15 - Weston is close to 3 hospitals and close to the area suffered hardest hit from earthquake, so it will have more reports from people evacuated from many places.  
+On the map, I saw location 15 - Weston is close to 3 hospitals and close to the area suffered hardest hit from earthquake, so it will have more reports from people evacuated from many places.  
 
 In the limit in this report, we will focus on large number of the reports, at the time before 12PM on Wed 08 (red oval mark in above picture) </br> 
     + Based on the time, we note some location with higher number of reports, which are Palice Hills, Old Town, Scenic Vista, BroadView, and Easton. 
     ![5 location noted](https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/locations%20with%20one%20large%20number%20of%20reports.png)
-    ![Palace Hills and Old Towns]Palace Hills and Old Towns(https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/Palace%20Hills%20and%20Old%20Towns.png)
-    ![Scenic Vista and BroadView]Scenic Vista and BroadView(https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/Scenic%20Vista%2C%20BroadView.png)
-    ![Easton]Easton(https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/Easton.png)
+    ![Palace Hills and Old Towns](https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/Palace%20Hills%20and%20Old%20Towns.png)
+    ![Scenic Vista and BroadView](https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/Scenic%20Vista%2C%20BroadView.png)
+    ![Easton](https://github.com/iDataVisualizationLab/VAST19_mc1/blob/master/images/observations/Easton.png)
     In this time, we saw Palace Hills is the most certain, and other locations which is close to the earthquake lose some report data. 
     
