@@ -1,6 +1,6 @@
 // Info to show visualization
-var lineChartWidth = 2960, lineChartHeight = 100,
-    lineChartMargin = {top: 30, right: 20, bottom: 30, left: 50},
+var lineChartWidth = 600, lineChartHeight = 160,
+    lineChartMargin = {top: 10, right: 20, bottom: 10, left: 50},
     lineChartContentWidth = lineChartWidth - lineChartMargin.left - lineChartMargin.right,
     lineChartContentHeight = lineChartHeight - lineChartMargin.top - lineChartMargin.bottom;
 
